@@ -1,0 +1,8 @@
+# Source media — originals live in ~/ai-buddy/site-media-originals/
+2026*.jpg
+2026*.mp4
+
+# Working files
+*.bak-*
+*(copy)*
+_*.html

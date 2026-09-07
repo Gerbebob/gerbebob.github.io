@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+      initial-scale=1.0">
+    <title>About AI Buddy — Bob Miksch</title>
+    <meta name="description" content="A voice AI companion whose brain
+      runs entirely on my own tower — how it started, and what it took
+      to move the brain home.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;family=JetBrains+Mono:wght@300;400;500&amp;display=swap"
+      rel="stylesheet">
+    <style>
+
+    :root {
+      --bg:        #f5f7f5;
+      --surface:   #ffffff;
+      --border:    #d8e0da;
+      --accent:    #2e7d52;
+      --accent-dim:#5aab7a;
+      --text:      #000000;      /* Pure black */
+      --text-dim:  #333333;      /* Dark gray */
+      --text-bright:#000000;     /* Pure black */
+      --mono: 'JetBrains Mono', monospace;
+      --serif: 'Libre Baskerville', Georgia, serif
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Subtle grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.25;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    /* ── HEADER ── */
+    header {
+      border-left: 2px solid var(--accent);
+      padding-left: 1.5rem;
+      margin-bottom: 3.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .name {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 700;
+      color: var(--text-bright);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .tagline {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--accent);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+    }
+
+    .location {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      margin-top: 0.3rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    section:nth-child(2) { animation-delay: 0.1s; }
+    section:nth-child(3) { animation-delay: 0.2s; }
+    section:nth-child(4) { animation-delay: 0.3s; }
+    section:nth-child(5) { animation-delay: 0.4s; }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--accent-dim);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── BIO ── */
+    .bio {
+      font-size: 0.97rem;
+      color: var(--text);
+      line-height: 1.85;
+    }
+
+    .bio em {
+      color: var(--text-bright);
+      font-style: italic;
+    }
+
+    /* ── CONTACT ── */
+    .contact-link {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent-dim);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .contact-link:hover {
+      color: var(--text-bright);
+      border-color: var(--text-bright);
+    }
+
+    /* ── INTEREST DOMAIN TAGS ── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: var(--text-dim);
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 0.3rem 0.65rem;
+      letter-spacing: 0.04em;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      cursor: default;
+    }
+
+    .tag:hover {
+      color: var(--accent);
+      border-color: var(--accent-dim);
+      background: rgba(76, 175, 120, 0.05);
+    }
+
+    /* ── STACK LIST ── */
+    .stack-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.35rem 1.5rem;
+    }
+
+    .stack-list li {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      padding: 0.2rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .stack-list li::before {
+      content: '›';
+      color: var(--accent-dim);
+      font-size: 0.9rem;
+    }
+
+    /* ── PROJECTS ── */
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .project {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.9rem 1.1rem;
+      background: var(--surface);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .project:hover {
+      border-color: var(--accent-dim);
+      background: rgba(76, 175, 120, 0.03);
+    }
+
+    .project-name {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.04em;
+    }
+
+    .project-desc {
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.5s forwards;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 480px) {
+      .container { padding: 2.5rem 1.25rem 4rem; }
+      .stack-list { grid-template-columns: 1fr 1fr; }
+    }
+  
+
+    /* --- article page, built on the site's own tokens --- */
+    .back { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--accent-dim); text-decoration: none; }
+    .back:hover { color: var(--accent); }
+    article h1 { font-family: var(--serif); font-size: 1.9rem; line-height: 1.25;
+                 margin: 1.6rem 0 0.5rem; font-weight: 700; }
+    .standfirst { font-size: 1.05rem; color: var(--text-dim); margin-bottom: 2.4rem;
+                  padding-bottom: 1.6rem; border-bottom: 1px solid var(--border); }
+    article h2 { font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
+                 letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-dim);
+                 margin: 3rem 0 1rem; }
+    article h3 { font-size: 1.12rem; margin: 2rem 0 0.6rem; font-weight: 700; }
+    article p { margin-bottom: 1.1rem; }
+    article ul { margin: 0 0 1.2rem 1.1rem; }
+    article li { margin-bottom: 0.45rem; }
+    article strong { font-weight: 700; }
+    blockquote { border-left: 2px solid var(--accent-dim); padding: 0.2rem 0 0.2rem 1.1rem;
+                 margin: 1.4rem 0; color: var(--text-dim); font-style: italic; }
+    .callout { background: var(--surface); border: 1px solid var(--border);
+               border-radius: 4px; padding: 1rem 1.2rem; margin: 1.6rem 0;
+               font-size: 0.95rem; }
+    .callout.warn { border-left: 3px solid #b3541e; }
+    .callout.star { border-left: 3px solid var(--accent); }
+    table { width: 100%; border-collapse: collapse; margin: 1.4rem 0; font-size: 0.9rem; }
+    th, td { text-align: left; padding: 0.55rem 0.7rem; border-bottom: 1px solid var(--border); }
+    th { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em;
+         text-transform: uppercase; color: var(--accent-dim); font-weight: 500; }
+    code { font-family: var(--mono); font-size: 0.85em; background: rgba(0,0,0,0.04);
+           padding: 0.1rem 0.35rem; border-radius: 3px; }
+    .kicker { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.2em;
+              text-transform: uppercase; color: var(--accent-dim); }
+    .table-wrap { overflow-x: auto; }
+
+    /* --- media --- */
+    figure { margin: 2.2rem 0; }
+    figure img,
+    figure video {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--surface);
+    }
+    figcaption {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      line-height: 1.6;
+      letter-spacing: 0.04em;
+      color: var(--text-dim);
+      margin-top: 0.6rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--accent-dim);
+    }
+    .clip-note {
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.06em;
+      color: var(--accent-dim); text-transform: uppercase; margin-bottom: 0.5rem;
+    }
+
+    </style>
+  </head>
+  <body>
+    <div class="container"> <a class="back" href="./">← bob miksch</a>
+      <article>
+        <p class="kicker">Personal infrastructure &nbsp;·&nbsp;
+          September 2026</p>
+        <h1>About AI Buddy</h1>
+        <p class="standfirst">A bit of philosophy.&nbsp; A new force has
+          entered the world, AI.&nbsp; In order for me to exert my will
+          to shape the world as I wish, and maximize my quality of life,
+          I must adapt.<br>
+        </p>
+        <ul>
+          <li>I can't do it by myself. AI assisted entities will have
+            more capabilities than a 'bare' human and will out-compete
+            me.</li>
+          <li>I don't see myself aligning exclusively with an external
+            frontier AI.&nbsp; While that may amplify my capabilities,
+            it makes me dependent on a resource over which I have no
+            control and which may be impermanent.&nbsp; And there is a
+            cost, the literal dollars and cents, and the scraping of my
+            identity and loss of digital sovereignty.</li>
+          <li>So, I see my path as building local, persistent, AI
+            capabilities; and having those capabilities both stand alone
+            to serve me, and broker my interactions with external AI
+            agents.</li>
+        </ul>
+        <p class="standfirst">My local AI capabilities are not separate
+          from me, they are personal augmentation.&nbsp; So I want them
+          to be available everywhere, all the time.&nbsp; But bolting
+          silicon onto flesh is a work in progress.&nbsp; AR glasses,
+          Neuralink, Bee wristband, Omi pendant, these all fall short in
+          one way or another.<br>
+        </p>
+        <p class="standfirst">AI Buddy is a step in that direction. It's
+          a plastic gadget about the size of a fat deck of cards. It has
+          a color screen, a microphone, a speaker, a camera and Wi-Fi.
+          You talk to it, it talks back — and when you ask it to look at
+          something, it does.&nbsp; It has access to my local LLM and
+          RAG, it can access the web, and it can escalate queries to
+          Claude AI API if necessary.&nbsp; It can be used at remote
+          locations via a secure (albeit cumbersome) Tailscale
+          pipeline.&nbsp; If nothing else, the AI Buddy is allowing me
+          to explore many of the form factor, hardware and custom
+          scripted software design choices for carrying my personal AI
+          augmentation with me.</p>
+        <figure class="clip">
+          <p class="clip-note">&#9656; Watch &nbsp;·&nbsp; 57 sec
+            &nbsp;·&nbsp; sound on</p>
+          <video controls preload="metadata" playsinline
+            poster="media/buddy-clip-poster.jpg">
+            <source src="media/buddy-clip.mp4" type="video/mp4">
+            Your browser cannot play this clip.
+          </video>
+          <figcaption>Asking Buddy a question, and the answer coming
+            back off the tower.</figcaption>
+        </figure>
+        <h2>Where it started</h2>
+        <p>I really just wanted to make a cute AI toy for my
+          granddaughters.&nbsp; I looked at a <a
+            href="https://www.youtube.com/watch?v=kH2ImnQFfLY">video</a>
+          and write-up from DFRobot — <em>"Build an Open-Source AI
+            Buddy: A DIY AI Companion for Kids"</em>. The brain is an
+          open-source project called <a
+            href="https://github.com/78/xiaozhi-esp32">Xiaozhi</a>,
+          running on a bare <strong>DB Robotics UNIHIKER K10</strong>
+          board with a custom BMS chip and battery.<br>
+        </p>
+        There was a problem.&nbsp; <strong>Everything you say goes to a
+          company in Shenzhen</strong> — and I read their terms
+        (translated from Chinese) rather than clicking through them:
+        <ul>
+          <li>After the wake word, the microphone keeps recording for <strong>a
+              full minute</strong></li>
+          <li>They take a <strong>perpetual, worldwide, transferable
+              licence</strong> over everything you say and everything it
+            says back — expressly including <em>"promotion, marketing,
+              user research"</em></li>
+          <li>Everything is stored <strong>inside China</strong>;
+            disputes go to Shenzhen arbitration</li>
+          <li>Deleting your data is <strong>email-only</strong>, up to
+            15 business days</li>
+        </ul>
+        <div class="callout warn"><strong>And the part that decided it.</strong>
+          Their console demands a <strong>Google account</strong> —
+          while the word "Google" appears <strong>nowhere</strong> in
+          their own policy documents. The paperwork and the product
+          don't match. That isn't a privacy trade-off you can even
+          evaluate.</div>
+        <p>So: <strong>Claude code helped me keep the toy, move the
+            brain.</strong></p>
+        <h2>What Claude code helped me change</h2>
+        <h3>1. The brain moved into my house</h3>
+        <p>The firmware on the board doesn't know where its brain is —
+          it just asks a web address on startup, and whatever answers,
+          it talks to. <strong>Claude code helped me change that one
+            address to my home AI server.<br>
+          </strong></p>
+        <p>Now everything runs on my tower, a desktop PC with a decent
+          graphics card: <strong>hearing</strong> (your speech becomes
+          text here), <strong>thinking</strong> (a local Qwen 3 model
+          answers), <strong>speaking</strong> (the reply becomes a
+          voice here too), and <strong>seeing</strong> (a second model
+          looks at the photos).</p>
+        <div class="callout star"><strong>My voice never leaves the
+            house.</strong> The words are made here, so only text could
+          ever travel further — and only if I deliberately ask for it. A
+          normal answer comes back in about a second.</div>
+        <h3>2. It can read my own library</h3>
+        <p>I run a system that reads my news feeds every night, scores
+          the articles, and keeps the ones worth keeping — about a year
+          of my own reading, indexed and searchable. <strong>The buddy
+            can ask it questions.</strong> Not "what does the internet
+          say about batteries" — <em>"what have <strong>I</strong>
+            saved about batteries?"</em> And it answers from my own
+          articles.</p>
+        <p>The trick is a broker script sitting in the slot where the AI
+          is supposed to be. Everything goes through it first, and it
+          decides where the question should go:</p>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr>
+                <th>You say</th>
+                <th>Where it goes</th>
+              </tr>
+              <tr>
+                <td>anything ordinary</td>
+                <td>the local model, free, ~1 second</td>
+              </tr>
+              <tr>
+                <td><em>"what have I saved about…"</em></td>
+                <td><strong>my own article library</strong></td>
+              </tr>
+              <tr>
+                <td><em>"what's the weather?"</em></td>
+                <td><strong>my own search server</strong>, then out to
+                  the web</td>
+              </tr>
+              <tr>
+                <td><em>"how's my print doing?"</em></td>
+                <td><strong>my 3D printer</strong></td>
+              </tr>
+              <tr>
+                <td><em>"ask Claude…"</em></td>
+                <td>out to Claude, deliberately, one question at a time</td>
+              </tr>
+              <tr>
+                <td><em>"ask Gemini…"</em></td>
+                <td>out to Gemini, same</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Nothing goes outside unless I say a word that sends it there.
+          And it <strong>steps aside</strong> — if my overnight jobs
+          are using the graphics card, the buddy says so and waits
+          rather than fighting them for it.</p>
+        <h3>3. It travels</h3>
+        <p>The buddy talks to my tower through a Tailscale pipeline.
+          Right now I have to use a <strong>travel router</strong> that
+          joins my private network wherever it finds internet — a hotel,
+          my phone's hotspot, a friend's Wi-Fi — and carries the buddy
+          along with it.&nbsp; AI Buddy <i>almost</i> carried Tailscale
+          along with it (MicroLink) but I just couldn't squeeze out
+          another 50Kb of memory to make room for it.<br>
+        </p>
+        <div class="callout star"><strong>One address, everywhere,
+            nothing to reconfigure.</strong> Put both in a bag, plug the
+          router in at the other end, and it works.</div>
+        <h3>4. It can look things up</h3>
+        <p>The one thing a local model genuinely can't do is know what
+          happened this morning. So it searches the web — through <strong>my
+            own search server</strong> (SearXNG which can also escalate
+          as needed to use Crawl4AI) not Google's.</p>
+        <div class="callout star"><strong>What leaves the house is the
+            search terms, and nothing else.</strong> My voice never
+          moves; the words are made here. And the search server strips
+          my identity before passing the query on, which is the entire
+          reason it exists.</div>
+        <blockquote>"What's the weather?" — <strong>"Rain likely today,
+            with a high near 69°F. Chance of rain 90%."</strong></blockquote>
+        <p>Most questions are answered straight from the search results,
+          in about a second. When the snippets aren't enough it fetches
+          the actual page and strips out the navigation and ads before
+          reading it — that takes longer, so it only happens when it has
+          to.</p>
+        <h3>5. It has visual recognition<br>
+        </h3>
+        It has a camera and is capable of recognizing things, and even
+        acting on what it sees (e.g. solve an equation).&nbsp; But more
+        importantly, I think it removes a major glasshole objection, the
+        fear of being photographed without consent.&nbsp; It has that
+        old-fashioned camera feel of having to raise it and point it at
+        the subject matter, which gives enough clues to allow people to
+        accept or reject the action. <br>
+        <h3>6. Its body was designed by Claude Code</h3>
+        The original build publishes its enclosure as <strong>meshes</strong>
+        — the 3D equivalent of a photograph of a shape. I have a Voron
+        2.4 3D printer, gathering dust as many of my projects do, but I
+        wired Claude Code to FreeCAD directly.&nbsp; FreeCAD&nbsp; runs
+        on my Windows PC, Claude runs on my Linux tower, and they talk
+        over the network. <br>
+        <br>
+        Claude Code converted the meshes to geometric shapes.&nbsp; I
+        described changes I wanted in plain numbers and Claude Code
+        built real, editable geometry rather than a picture of geometry.
+        Front shell, rear cover, button, camera cone — all modified
+        according to my instructions.&nbsp; <br>
+        <br>
+        Just another new capability in our maker-changing world.<br>
+        <h3>7. It got a new face</h3>
+        <p>It shipped with cartoon emoji faces. It now has hand-built
+          robot eyes in the style of Anki's Cozmo — cyan on black,
+          blinking, one eye narrowing when it's thinking.</p>
+        <p>The neat part: they aren't pictures. They're <strong>drawn
+            from a handful of numbers</strong> — how tall each eye is,
+          how the lids slant, how often it blinks — so the whole set of
+          21 expressions is about 125 kilobytes. The photographic emoji
+          they replaced were twelve times bigger.</p>
+        <div class="callout warn">And that mattered more than it sounds.
+          The camera had been failing constantly, and it turned out the
+          board had simply run out of memory — the "wake word" model was
+          eating half of it. Dropping that freed enough room that <strong>the
+            camera started working the same day.</strong></div>
+        <h2>What it can and can't do</h2>
+        <p><strong>Can:</strong> answer ordinary questions in about a
+          second; look at things ("what am I holding?", "what does this
+          label say?"); answer from my own year of saved reading; look
+          things up on the web; report on the 3D printer; escalate a
+          hard question to Claude or Gemini when I ask; change character
+          between <strong>Computer</strong> (dry and brief), <strong>Mabel</strong>
+          (a housekeeper, calls me sir) and <strong>Sweetie</strong>
+          (Southern warmth); and show any of its 21 expressions on
+          request.</p>
+        <p><strong>Can't:</strong> music, timers, or control of anything
+          else in the house — yet. It knows it can't, and says so
+          plainly rather than pretending — which took some doing.</p>
+        <h2>The honest summary</h2>
+        <p>The out-of-the-box version was simple but compromised in what
+          I gave up (security holes) for what I was getting.&nbsp;
+          Creating AI Buddy from the foundation (basically keeping,
+          revising and customizing the firmware) was a chore, I won't
+          lie.&nbsp; Replacing its brain took about a week of evenings,
+          and most of that week went on things that had nothing to do
+          with AI: a camera that was really a memory shortage, a router
+          that wouldn't answer pings because routers don't, and a test
+          that looked like it proved something and couldn't have.&nbsp;
+          All told, smoothing things, it has been a solid month. <br>
+        </p>
+        <p><strong>What I have now that I couldn't buy:</strong> a
+          companion that knows what <em>I've</em> been reading, that
+          keeps my voice in my own house, that works the same in a hotel
+          room as on my desk — and that is sitting in a shell the same
+          family of tools helped me draw.<br>
+        </p>
+        <h2>whither next, young man<br>
+        </h2>
+        I like AI Buddy.&nbsp; I still want to explore this
+        human-augmentation, carry my local AI around everywhere
+        space.&nbsp; Already thinking about AI Buddy Two, maybe a Linux
+        Raspberry Pi.&nbsp; I want full bluetooth, full wifi and
+        Tailscale on board.&nbsp; The bluetooth will give me earbuds,
+        and might give me a bone conduction microphone, which would give
+        me almost private communications with AI Buddy which overcomes
+        the "speaking private matters in public" objection.<br>
+        <br>
+        After that, maybe ESIM, GPS, sensors, we will see.&nbsp; <br>
+      </article>
+      <footer> bob miksch &nbsp;·&nbsp; seattle, wa &nbsp;·&nbsp;
+        personal infrastructure </footer>
+    </div>
+  </body>
+</html>

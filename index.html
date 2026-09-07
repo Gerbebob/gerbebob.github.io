@@ -7,9 +7,7 @@
       initial-scale=1.0">
     <title>Bob Miksch</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;family=JetBrains+Mono:wght@300;400;500&amp;display=swap"
-      rel="stylesheet">
+    <link href="index_files/css2_Fk7X.css" rel="stylesheet">
     <style>
     :root {
       --bg:        #f5f7f5;
@@ -255,6 +253,34 @@ href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400
       animation: fadeUp 0.6s ease 0.5s forwards;
     }
 
+    /* ── FIGURES / MEDIA ── */
+    figure { margin: 0; }
+    figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--surface);
+    }
+    figcaption {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      line-height: 1.6;
+      letter-spacing: 0.04em;
+      color: var(--text-dim);
+      margin-top: 0.6rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--accent-dim);
+    }
+
+    .pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0 0;
+    }
+
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(12px); }
@@ -265,6 +291,7 @@ href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400
     @media (max-width: 480px) {
       .container { padding: 2.5rem 1.25rem 4rem; }
       .stack-list { grid-template-columns: 1fr 1fr; }
+      .pair { grid-template-columns: 1fr; }
     }
   </style>
   </head>
@@ -278,15 +305,16 @@ href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400
       </header>
       <section>
         <div class="section-label">About</div>
-        <p class="bio">Retired scientist type and existential thinker. I
+        <p class="bio">Retired scientist type and existentialist. I
           spend my time doom scrolling through the frontier edges of
           technology, society, and science — and working diligently on
-          my personal AI infrastructure for cognitive expansion and
-          hardening my defensive position.&nbsp; The pace of life is
-          increasing while I slow down, but I live my life with the
-          understanding that: <em>The past is gone and the future is
-            yet to come. Here and now is nothing less than the totality
-            of existence.</em><em></em> </p>
+          my personal AI infrastructure for cognitive expansion, digital
+          sovereignty and hardening my defensive position in a rapidly
+          changing world.&nbsp; The pace of life is increasing while I
+          slow down, but I live my life with the understanding that<em>
+            the past is gone and the future is yet to come. Here and now
+            is nothing less than the totality of existence.</em><em></em>
+        </p>
       </section>
       <section>
         <div class="section-label">Contact</div>
@@ -296,14 +324,12 @@ href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400
       <section>
         <div class="section-label">Interest Domains</div>
         <div class="tags"> <font size="+1"><span class="tag">ai_local</span>
-            <span class="tag">ai_frontier</span> <span class="tag">ai_society</span>
-            <span class="tag">hard_science</span> <span class="tag">human_augmentation</span>
-            <span class="tag">personal_security</span> <span
-              class="tag">digital_sovereignty</span> <span class="tag">senior_health</span>
+            <span class="tag">ai_frontier</span> <span class="tag">ai_society</span>&nbsp;
+            <span class="tag">human_augmentation</span> <span
+              class="tag">personal_security</span><span class="tag">senior_health</span>
             <span class="tag">domestic_politics</span> <span
-              class="tag">global_affairs</span> <span class="tag">military_technology</span>
-            <span class="tag">popular_technology</span> <span
-              class="tag">disruptive_foresight</span> <span class="tag">financial_watch</span></font>
+              class="tag">global_affairs</span>&nbsp;&nbsp; <span
+              class="tag">civil_society</span> <span class="tag">financial_watch</span></font>
         </div>
       </section>
       <section>
@@ -333,7 +359,40 @@ href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400
         </ul>
       </section>
       <section>
-        <div class="section-label">Current Projects</div>
+        <div class="section-label">CURRENT ALL CONSUMING Project</div>
+        <div class="projects"> <a class="project" href="ai-buddy.html"
+            style="display:block; text-decoration:none;">
+            <div class="project-name">AI BUDDY</div>
+            <div class="project-desc">A voice companion on a UNIHIKER
+              K10 ES32 display board whose brain runs entirely on my own
+              tower — local speech, local models, and my own
+              clipped-article library.&nbsp; Camera allows visual
+              identification.&nbsp; Access to the web, capable of
+              escalating questions to frontier AI models (currently
+              Claude API).&nbsp; Secure remote connections through
+              Tailscale.&nbsp; 3D printed case built using Claude Code
+              to drive FreeCAD.&nbsp; See breakout page for more
+              technical details.<br>
+            </div>
+          </a>
+          <div class="pair">
+            <figure>
+              <img src="media/buddy-left.jpg" loading="lazy"
+                alt="AI Buddy assembled, screen lit with two cyan eyes">
+              <figcaption>Assembled — printed case, speaker grille, and
+                the eyes awake.</figcaption>
+            </figure>
+            <figure>
+              <img src="media/buddy-right.jpg" loading="lazy"
+                alt="AI Buddy opened up, showing board and battery">
+              <figcaption>Opened up — UNIHIKER K10 board, camera, and a
+                2000&nbsp;mAh LiPo in the lid.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="section-label">GET STARTED IN AI Projects</div>
         <div class="projects">
           <div class="project">
             <div class="project-name">IID — Interests Intelligence
@@ -352,8 +411,16 @@ href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400
               deny my ideas; and (4) absorb the results into a second
               brain built on an Obsidian LLM wiki brain supplemented by
               a LightRAG database.&nbsp; The purpose is to state my
-              beliefs, constantly challe nge them, modify them based on
-              citable information, and develop actionable intelligence.</div>
+              beliefs, constantly challenge them, modify them based on
+              citable information, and develop actionable
+              intelligence.&nbsp; SEASONED BOB: All built, but a
+              personal general corpus still cannot compete with simple
+              Google Search.&nbsp; No amount of trend analysis or
+              unexpected connection searches overcomes this.&nbsp; May
+              work for a personal expertise corpus, but not for
+              me.&nbsp; Has improve the quality of the news I review
+              daily, and that is a win.<br>
+            </div>
           </div>
           <div class="project">
             <div class="project-name">Obsidian</div>
@@ -369,7 +436,12 @@ href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400
               central to being the organizational nexus between me and
               my AI ecosystem, loosely the 2nd brain concept, that it
               deserves its own placeholder here.&nbsp; Attempting to
-              have it anywhere, anytime on PC, tablet and phone.<br>
+              have it anywhere, anytime on PC, tablet and phone.
+              SEASONED BOB:&nbsp; Blah blah.&nbsp; Yes, still my main
+              organizational tool, and nothing else compares.&nbsp; But
+              it shapes me as much as I shape it.&nbsp; Call it meeting
+              AI in the middle, accept the friction as the cost of
+              buying chips at the table.<br>
             </div>
           </div>
           <div class="project">
@@ -380,7 +452,9 @@ href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400
               personal "who I am" knowledge database.&nbsp; UPDATED
               BOB:&nbsp; Dormant now, but structure is there.&nbsp; I
               realized that this is more of a "talking tombstone"
-              project than something that would feed my Query Workbench.</div>
+              project than something that would feed my Query Workbench.
+              SEASONED BOB:&nbsp; Someday.&nbsp; Maybe.<br>
+            </div>
           </div>
           <div class="project">
             <div class="project-name">Query Workbench</div>
@@ -395,7 +469,11 @@ href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400
               of armor to protect me and give me weapons to defend my
               interests.&nbsp; Concept has been upgraded to more of a
               strategic objective, and I expect the objective will be
-              met through a series of functional elements.</div>
+              met through a series of functional elements.&nbsp;
+              SEASONED BOB:&nbsp; Have grabbed parts here and there,
+              concept still has legs, but just has not proved to give
+              the performance improvement I sought.<br>
+            </div>
           </div>
           <div class="project">
             <div class="project-name">ComfyGen UI</div>
@@ -403,7 +481,10 @@ href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400
               interface over a Stable Diffusion foundation to generate
               and manage images.&nbsp; UPDATED BOB:&nbsp; This was for
               fun and to generate a specific image.&nbsp; Made a lot of
-              progress, but backburner.</div>
+              progress, but backburner. SEASONED BOB:&nbsp; See that
+              houseplant in the corner with the brown and curled leaves?
+              <br>
+            </div>
           </div>
           <div class="project">
             <div class="project-name">Probabilities Trend Tracker</div>
@@ -412,7 +493,10 @@ href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400
               items fused with new items flagged on the fly based on
               personal domain interests. UPDATED BOB:&nbsp; Concept is
               sound, some preliminary scripts built, but backburner for
-              now.</div>
+              now.&nbsp; SEASONED BOB:&nbsp; Personal trend analysis is
+              just an ant walking around on a New York city
+              sidewalk.&nbsp; There are bigger players afoot.<br>
+            </div>
           </div>
           <div class="project">
             <div class="project-name">Medical KB</div>
@@ -421,7 +505,11 @@ href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400
               informed, context-aware health queries.&nbsp; UPDATED
               BOB:&nbsp; Yeah, I have records, but they are a massive
               single pdf and I have to strip out tons of
-              boilerplate.&nbsp; Backburner.</div>
+              boilerplate.&nbsp; Backburner. SEASONED BOB: Backburner,
+              but may resurface as an AI Buddy accessible database
+              during doctor visits.&nbsp; A ways down the road, but very
+              doable.&nbsp; Utility?&nbsp; TBD.<br>
+            </div>
           </div>
         </div>
       </section>
