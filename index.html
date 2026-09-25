@@ -274,6 +274,85 @@
       border-left: 2px solid var(--accent-dim);
     }
 
+    /* photo floated to the right of a card's text */
+    .card-shot {
+      float: right;
+      width: 30%;
+      max-width: 170px;
+      margin: 0.2rem 0 0.5rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    a.project { display: flow-root; }
+    .go {
+      margin-top: 0.8rem;
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-top: 1px solid var(--border);
+      padding-top: 0.7rem;
+    }
+    .go span { display: inline-block; transition: transform 0.18s ease; }
+    a.project:hover .go { text-decoration: underline; }
+    a.project:hover .go span { transform: translateX(4px); }
+
+    /* ── ORG-CHART BRANCHES under a parent card ── */
+    .branch {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-left: 1.5rem;
+      padding-left: 1.5rem;
+    }
+    .branch > .project { position: relative; }
+    .branch > .project::before {
+      content: '';
+      position: absolute;
+      left: calc(-1.5rem - 1px);
+      top: -1rem;
+      width: 1.5rem;
+      height: 2.3rem;
+      border-left: 2px solid var(--accent-dim);
+      border-bottom: 2px solid var(--accent-dim);
+      border-bottom-left-radius: 6px;
+    }
+    .branch > .project:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: calc(-1.5rem - 1px);
+      top: 1.3rem;
+      bottom: -0.75rem;
+      border-left: 2px solid var(--accent-dim);
+    }
+
+    .trio {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1rem 0 0;
+    }
+    .trio figure { margin: 0; }
+    .trio img {
+      width: 100%;
+      height: 280px;
+      object-fit: contain;          /* portrait screenshot gets whitespace either side */
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      display: block;
+    }
+    .trio figcaption {
+      margin-top: 0.4rem;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      line-height: 1.45;
+    }
+    @media (max-width: 620px) {
+      .trio { grid-template-columns: 1fr; }
+      .trio img { height: auto; max-height: 340px; }
+    }
     .pair {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -292,6 +371,10 @@
       .container { padding: 2.5rem 1.25rem 4rem; }
       .stack-list { grid-template-columns: 1fr 1fr; }
       .pair { grid-template-columns: 1fr; }
+      .branch { margin-left: 0.75rem; padding-left: 1rem; }
+      .branch > .project::before,
+      .branch > .project:not(:last-child)::after { left: calc(-1rem - 1px); }
+      .branch > .project::before { width: 1rem; }
     }
   </style>
   </head>
@@ -372,10 +455,12 @@
               Claude API).&nbsp; Secure remote connections through
               Tailscale.&nbsp; 3D printed case built using Claude Code
               to drive FreeCAD.&nbsp; See breakout page for more
-              technical details.<br>
+              technical details.&nbsp; AI Buddy has now moved to be a
+              phone app.<br>
             </div>
+            <div class="go">Read the full AI Buddy story <span>&rarr;</span></div>
           </a>
-          <div class="pair">
+          <div class="trio">
             <figure>
               <img src="media/buddy-left.jpg" loading="lazy"
                 alt="AI Buddy assembled, screen lit with two cyan eyes">
@@ -388,6 +473,46 @@
               <figcaption>Opened up — UNIHIKER K10 board, camera, and a
                 2000&nbsp;mAh LiPo in the lid.</figcaption>
             </figure>
+            <figure>
+              <img src="media/buddy-phone-chat.jpg" loading="lazy"
+                alt="AI Buddy phone app: asking what I have saved about
+                Japan and South Korea, answered from my own clips">
+              <figcaption>Now a phone app — answering from my own
+                clipped-article library.</figcaption>
+            </figure>
+          </div>
+          <div class="branch">
+            <div class="project">
+              <div class="project-name">ADDING TO AI BUDDY &mdash; AI Rabbi</div>
+              <div class="project-desc">Attempting to ask what Jewish
+                thinking would be on new issues facing us.&nbsp; Is AI
+                alive?&nbsp; What are our obligations for civil
+                disobedience these days?&nbsp; What should be our stance
+                to universal Flock camera surveillance?&nbsp; A work in
+                progress, but certainly is surfacing some interesting
+                concepts.&nbsp; One was an extension of the Turing
+                test.&nbsp; If a warm and fuzzy robot can emote with
+                humans and respond to needs such as comforting the
+                grieving, is it alive?&nbsp; I think the answer is no,
+                not because it can't be distinguished from a human in
+                its action, but because it may not have tikkun olam (repair
+                the world) intent.</div>
+            </div>
+            <div class="project">
+              <div class="project-name">ADDING TO AI BUDDY &mdash; Medical Records</div>
+              <div class="project-desc">I don't know about you, but I
+                need the fingers of both hands to count the turnover in
+                my health care providers.&nbsp; So I want my own copy of
+                my medical records.&nbsp; Turns out I can probably pull,
+                and surface upon demand, and assemble my medical data
+                (e.g. time sorted test results) using Epic on FHIR
+                developer account.&nbsp; Have got the API, building the
+                sandbox app now.&nbsp; BTW, previous problem of "massive
+                PDF" evaporated, what MyChart sent me was composed of
+                HL7 CDA clinical documents with their unit, their date
+                and their normal range already attached.&nbsp; No
+                parsing needed.</div>
+            </div>
           </div>
         </div>
       </section>
@@ -420,6 +545,25 @@
               work for a personal expertise corpus, but not for
               me.&nbsp; Has improve the quality of the news I review
               daily, and that is a win.<br>
+            </div>
+          </div>
+          <div class="branch">
+            <div class="project">
+              <div class="project-name">JobScout</div>
+              <div class="project-desc">Offspring and spouses looking
+                for jobs.&nbsp; IID framework easily adjusted to send
+                them a daily postings briefing matching their desired
+                job description, with a match rank, lead to the posting
+                site, and possible human follow up contact
+                information.&nbsp; Very neat and clean.</div>
+            </div>
+            <div class="project">
+              <div class="project-name">Paper Trail</div>
+              <div class="project-desc">Son has a writers submission
+                management tool.&nbsp; IID framework being tested to
+                generate a curated, refreshed daily, list of publisher
+                sites that authors can submit to.&nbsp; Nearly done, in
+                qualification stage.</div>
             </div>
           </div>
           <div class="project">
@@ -496,19 +640,6 @@
               now.&nbsp; SEASONED BOB:&nbsp; Personal trend analysis is
               just an ant walking around on a New York city
               sidewalk.&nbsp; There are bigger players afoot.<br>
-            </div>
-          </div>
-          <div class="project">
-            <div class="project-name">Medical KB</div>
-            <div class="project-desc">NAIVE BOB:&nbsp; Personal medical
-              records ingested into a private knowledge base for
-              informed, context-aware health queries.&nbsp; UPDATED
-              BOB:&nbsp; Yeah, I have records, but they are a massive
-              single pdf and I have to strip out tons of
-              boilerplate.&nbsp; Backburner. SEASONED BOB: Backburner,
-              but may resurface as an AI Buddy accessible database
-              during doctor visits.&nbsp; A ways down the road, but very
-              doable.&nbsp; Utility?&nbsp; TBD.<br>
             </div>
           </div>
         </div>

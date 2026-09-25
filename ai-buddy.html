@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,
       initial-scale=1.0">
-    <title>About AI Buddy — Bob Miksch</title>
+    <title>MOCKUP · About AI Buddy — Bob Miksch</title>
     <meta name="description" content="A voice AI companion whose brain
       runs entirely on my own tower — how it started, and what it took
       to move the brain home.">
@@ -331,11 +331,58 @@ href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400
       color: var(--accent-dim); text-transform: uppercase; margin-bottom: 0.5rem;
     }
 
+
+    /* --- mockup-only additions --- */
+    .mockup-banner { font-family: var(--mono); font-size: 0.72rem; background: #fff4d6;
+      border: 1px dashed #b3541e; border-radius: 4px; padding: 0.7rem 1rem; margin: 1.2rem 0; }
+    .tbc { background: #fff4d6; border-bottom: 1px dashed #b3541e; }
+    .phone-row { display: grid; grid-template-columns: 200px 1fr; gap: 1.5rem;
+      align-items: start; margin: 1.6rem 0; }
+    .phone-row figure { margin: 0; }
+    .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+      margin: 1.6rem 0 1.2rem; }
+    .trio figure { margin: 0; }
+    .trio img { width: 100%; height: 280px; object-fit: contain;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 4px; display: block; }
+    .trio figcaption { margin-top: .4rem; font-size: .78rem; color: var(--text-dim); }
+    details.origin { border: 1px solid var(--border); border-radius: 4px;
+      background: var(--surface); padding: 0.9rem 1.2rem; margin: 3rem 0 1rem; }
+    details.origin summary { font-family: var(--mono); font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); cursor: pointer;
+      list-style: none; display: flex; align-items: baseline; gap: .55rem; }
+    details.origin summary::-webkit-details-marker { display: none; }
+    details.origin summary::before { content: "\25B8"; display: inline-block;
+      transition: transform .15s ease; font-size: .9em; }
+    details.origin[open] summary::before { transform: rotate(90deg); }
+    details.origin summary::after { content: "click to open"; margin-left: auto;
+      font-size: 0.68rem; letter-spacing: .04em; text-transform: none;
+      color: var(--text-dim); border-bottom: 1px dotted currentColor; }
+    details.origin[open] summary::after { content: "click to close"; }
+    details.origin summary:hover { text-decoration: underline; }
+    details.origin:hover { border-color: var(--accent); }
+    details.origin summary span { color: var(--text-dim); text-transform: none; font-weight: 400; }
+    details.origin[open] summary { margin-bottom: 1rem; }
+    .pair-mock { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+    .pair-mock img { width: 100%; border: 1px solid var(--border); border-radius: 4px; }
+    @media (max-width: 620px) {
+      .trio { grid-template-columns: 1fr; }
+      .trio img { height: auto; max-height: 340px; }
+    }
+    @media (max-width: 480px) {
+      .phone-row { grid-template-columns: 1fr; }
+      .phone-row figure { max-width: 220px; }
+      .trio { grid-template-columns: 1fr; }
+      .trio img { height: auto; max-height: 340px; }
+    }
     </style>
   </head>
   <body>
     <div class="container"> <a class="back" href="./">← bob miksch</a>
       <article>
+        <div class="mockup-banner">MOCKUP — not published.&nbsp; Proposed
+          new version of this page.&nbsp; Text marked <span class="tbc">like
+          this</span> is a guess for Bobby to confirm or rewrite.</div>
         <p class="kicker">Personal infrastructure &nbsp;·&nbsp;
           September 2026</p>
         <h1>About AI Buddy</h1>
@@ -366,19 +413,136 @@ href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400
           Neuralink, Bee wristband, Omi pendant, these all fall short in
           one way or another.<br>
         </p>
-        <p class="standfirst">AI Buddy is a step in that direction. It's
-          a plastic gadget about the size of a fat deck of cards. It has
-          a color screen, a microphone, a speaker, a camera and Wi-Fi.
-          You talk to it, it talks back — and when you ask it to look at
-          something, it does.&nbsp; It has access to my local LLM and
-          RAG, it can access the web, and it can escalate queries to
-          Claude AI API if necessary.&nbsp; It can be used at remote
-          locations via a secure (albeit cumbersome) Tailscale
-          pipeline.&nbsp; If nothing else, the AI Buddy is allowing me
-          to explore many of the form factor, hardware and custom
-          scripted software design choices for carrying my personal AI
-          augmentation with me.</p>
-        <figure class="clip">
+
+        <h2>AI Buddy is now a phone app</h2>
+        <p>AI Buddy started life as a plastic gadget on my desk (the story
+          is further down).&nbsp; It taught me what I actually wanted, and
+          the answer turned out to be already in my pocket.&nbsp; <strong>AI
+          Buddy is now an app on a phone.</strong>&nbsp; Same brain, same
+          home server, same rules — a better body.</p>
+        <p><strong>Here is the concept:</strong></p>
+        <figure>
+          <img src="media/buddy-phone-diagram.jpg" loading="lazy"
+            alt="Diagram: the AI Buddy app talks over my own network to a
+            small server in my house, which holds my clips, numbers,
+            Jewish KB and lab results; the outside world is reached only
+            through one door I hold the key to">
+          <figcaption>The phone is just the door.&nbsp; Everything that
+            matters lives on the tower, and only goes outside when I ask,
+            one question at a time.</figcaption>
+        </figure>
+        <div class="trio">
+          <figure>
+            <img src="media/buddy-left.jpg" loading="lazy"
+              alt="The original AI Buddy gadget, eyes lit">
+            <figcaption>The gadget</figcaption>
+          </figure>
+          <figure>
+            <img src="media/buddy-right.jpg" loading="lazy"
+              alt="The original AI Buddy opened up">
+            <figcaption>&hellip; opened up</figcaption>
+          </figure>
+          <figure>
+            <img src="media/buddy-phone-chat.jpg" loading="lazy"
+              alt="AI Buddy phone app: asking what I have saved about
+              Japan and South Korea, answered from my own clips">
+            <figcaption>What it is now</figcaption>
+          </figure>
+        </div>
+        <div>
+            <p>You hold the button and talk; it answers out loud, and the
+              conversation shows on screen as text.&nbsp; Or tap the
+              handset and just talk, like a phone call — no button per
+              sentence.</p>
+            <p>In the screenshot I'm asking <em>"What have I saved about
+              Japan and South Korea?"</em>&nbsp; It isn't answering from
+              the internet.&nbsp; It is answering from <strong>my own
+              library of clipped articles</strong>, on my own server, and
+              it knows when my clips don't cover a question.</p>
+        </div>
+        <p>AI Buddy will not stop with my clips.&nbsp; The plan is for it
+          to act as a surface for all of my AI services.&nbsp; Different
+          knowledgebases will require different delivery of query results
+          (e.g. a graph of medical test results vs. a structured essay for
+          an AI Rabbi response) but that will all be handled.</p>
+        <figure>
+          <img src="media/buddy-phone-lanes.jpg" loading="lazy"
+            alt="Design sketch of the app: a landing grid of lanes (Talk,
+            IID clips, Numbers, Jewish KB, Medical), and inside the Medical
+            lane an Ask tab with the answer drawn as a chart">
+          <figcaption>Where it's heading (design sketch, not built yet).&nbsp;
+            The home screen is a grid of "lanes", one per corner of my
+            tower, and the tower decides what's on it, so a new lane needs
+            no app update.&nbsp; Every lane works the same way — ask by
+            voice, get an answer drawn in whatever form suits it (a chart
+            for lab results, a passage for the Jewish KB).&nbsp; Medical
+            values shown are invented.</figcaption>
+        </figure>
+
+        <h2>Why a phone beat the gadget</h2>
+        <ul>
+          <li><strong>It travels for real.</strong>&nbsp; The gadget
+            couldn't fit Tailscale in its memory, so it needed a travel
+            router.&nbsp; A phone runs Tailscale natively — hotel, café,
+            cell signal, it just connects home.</li>
+          <li><strong>Private audio.</strong>&nbsp; Earbuds solve the
+            "speaking private matters out loud in public" problem the
+            gadget never could.</li>
+          <li><strong>Better ears.</strong>&nbsp; A modern phone has
+            several microphones and good noise handling, so it hears me
+            across a room without any extra hardware.</li>
+          <li><strong>A real screen.</strong>&nbsp; Answers come back as
+            readable text as well as speech, so I can scroll back
+            through what it said.</li>
+          <li><strong>It's a portal, not a toy.</strong>&nbsp; The same
+            door now opens onto everything else on the tower — my
+            clipped articles today, <span class="tbc">AI Rabbi and my own
+            medical records soon, and other services and agents</span> as
+            I wire them in.</li>
+        </ul>
+
+        <h2>What carried over — everything that mattered</h2>
+        <p>The phone didn't need a new brain.&nbsp; Everything I built
+          for the gadget moved across untouched: the speech recognition,
+          the local model, the voice, the router script that decides
+          where each question goes.&nbsp; <strong>A body swap, not a
+          rebuild.</strong></p>
+        <div class="callout star"><strong>My voice never leaves the
+            house.</strong> Speech becomes text on my own tower, so only
+          text could ever travel further — and only if I deliberately
+          ask for it.</div>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><th>You say</th><th>Where it goes</th></tr>
+              <tr><td>anything ordinary</td><td>the local model, free, ~1 second</td></tr>
+              <tr><td><em>"what have I saved about…"</em></td><td><strong>my own article library</strong></td></tr>
+              <tr><td><em>"what's the weather?"</em></td><td><strong>my own search server</strong>, then out to the web</td></tr>
+              <tr><td><em>"how's my print doing?"</em></td><td><strong>my 3D printer</strong></td></tr>
+              <tr><td><em>"ask Claude…"</em></td><td>out to Claude, deliberately, one question at a time</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Nothing goes outside unless I say a word that sends it there.
+          And it <strong>steps aside</strong> — if my overnight jobs are
+          using the graphics card, the buddy says so and waits rather than
+          fighting them for it.</p>
+
+        <h2>What the phone gave up</h2>
+        <p><strong>No wake word.</strong>&nbsp; The gadget woke up when
+          I said "Computer" across the room.&nbsp; On the phone I tap once
+          to start a conversation — then it's hands-free.&nbsp; A desk
+          problem, not a travel problem.&nbsp; The camera came along too — snap a photo in the app and ask about
+          it.</p>
+
+        <details class="origin">
+          <summary>Where it started — the original AI Buddy gadget
+            <span>(the K10 build, September 2026)</span></summary>
+          <p>The first AI Buddy was a plastic gadget about the size of a
+            fat deck of cards, with a color screen, a microphone, a
+            speaker, a camera and Wi-Fi.&nbsp; Most of what's above was
+            invented for it, and the lessons still apply to the phone.</p>
+          <figure class="clip">
           <p class="clip-note">&#9656; Watch &nbsp;·&nbsp; 57 sec
             &nbsp;·&nbsp; sound on</p>
           <video controls preload="metadata" playsinline
@@ -389,7 +553,7 @@ href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400
           <figcaption>Asking Buddy a question, and the answer coming
             back off the tower.</figcaption>
         </figure>
-        <h2>Where it started</h2>
+<h3>Why I moved its brain home</h3>
         <p>I really just wanted to make a cute AI toy for my
           granddaughters.&nbsp; I looked at a <a
             href="https://www.youtube.com/watch?v=kH2ImnQFfLY">video</a>
@@ -423,7 +587,7 @@ href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400
           evaluate.</div>
         <p>So: <strong>Claude code helped me keep the toy, move the
             brain.</strong></p>
-        <h2>What Claude code helped me change</h2>
+        <h3>What Claude code helped me change</h3>
         <h3>1. The brain moved into my house</h3>
         <p>The firmware on the board doesn't know where its brain is —
           it just asks a web address on startup, and whatever answers,
@@ -557,7 +721,7 @@ href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400
           board had simply run out of memory — the "wake word" model was
           eating half of it. Dropping that freed enough room that <strong>the
             camera started working the same day.</strong></div>
-        <h2>What it can and can't do</h2>
+        <h3>What it can and can't do</h3>
         <p><strong>Can:</strong> answer ordinary questions in about a
           second; look at things ("what am I holding?", "what does this
           label say?"); answer from my own year of saved reading; look
@@ -570,7 +734,7 @@ href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400
         <p><strong>Can't:</strong> music, timers, or control of anything
           else in the house — yet. It knows it can't, and says so
           plainly rather than pretending — which took some doing.</p>
-        <h2>The honest summary</h2>
+        <h3>The honest summary</h3>
         <p>The out-of-the-box version was simple but compromised in what
           I gave up (security holes) for what I was getting.&nbsp;
           Creating AI Buddy from the foundation (basically keeping,
@@ -588,18 +752,16 @@ href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400
           room as on my desk — and that is sitting in a shell the same
           family of tools helped me draw.<br>
         </p>
+                </details>
+
         <h2>whither next, young man<br>
         </h2>
-        I like AI Buddy.&nbsp; I still want to explore this
-        human-augmentation, carry my local AI around everywhere
-        space.&nbsp; Already thinking about AI Buddy Two, maybe a Linux
-        Raspberry Pi.&nbsp; I want full bluetooth, full wifi and
-        Tailscale on board.&nbsp; The bluetooth will give me earbuds,
-        and might give me a bone conduction microphone, which would give
-        me almost private communications with AI Buddy which overcomes
-        the "speaking private matters in public" objection.<br>
-        <br>
-        After that, maybe ESIM, GPS, sensors, we will see.&nbsp; <br>
+        <p>I still want to explore this human-augmentation, carry my
+          local AI around everywhere space.&nbsp; The gadget taught me
+          the form factor; the phone is the one I actually carry.&nbsp; 
+          Next is opening more doors from the phone onto what's on the
+          tower.&nbsp; After that, maybe a bone conduction microphone,
+          sensors, we will see.</p>
       </article>
       <footer> bob miksch &nbsp;·&nbsp; seattle, wa &nbsp;·&nbsp;
         personal infrastructure </footer>
