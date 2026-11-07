@@ -51,6 +51,7 @@ h3, h4 { font-size: 1rem; }
 .ask > button { margin-top: .6rem; }
 button { padding: .7rem 1rem; font: inherit; font-size: .9rem; cursor: pointer; border-radius: 7px;
   background: rgba(63,185,80,.12); color: var(--accent); border: 1px solid var(--accent); }
+button.ghost { background: transparent; color: var(--muted, inherit); border-color: var(--line); margin-left: .5rem; }
 .card, .hit { background: var(--card); border: 1px solid var(--line); border-radius: 9px;
   padding: .9rem 1rem; margin-bottom: .8rem; }
 .card .t, .hit .t { font-size: 1.06rem; font-weight: bold; color: var(--ink); text-decoration: none; }
@@ -170,6 +171,17 @@ details.framing input[type="text"] { width: 100%; box-sizing: border-box; margin
    given a quieter frame so it reads as a peer of Notes and sources. */
 .precedent-panel { margin-top: 2rem; border-top: 2px solid var(--accent); }
 .precedent-panel h2 { margin-top: 0; font-size: 1.05rem; }
+/* 2026-10-30 (Bobby) — the tabs ARE the navigation, so the active one is filled, like the
+   selected lane on the AI Buddy landing screen. Text uses --bg so it holds in both themes. */
+nav.tabs a.on, nav.tabs a.on:hover { background: var(--accent); border-color: var(--accent);
+  color: var(--bg); font-weight: bold; }
+/* 2026-10-30 (Bobby) — readers took the summary for the whole answer and missed the responsum.
+   An explicit button under each summary, not just the title link. */
+.readfull { display: inline-flex; align-items: center; min-height: 44px; margin-top: .6rem;
+  padding: 0 1rem; border: 1px solid var(--accent); border-radius: 9px; color: var(--accent);
+  background: rgba(63,185,80,.12); font-weight: bold; font-size: .92rem; text-decoration: none; }
+.readfull:hover { background: var(--accent); color: var(--bg); }
+.ruling .lbl { color: var(--dim); font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; }
 
 /* --- site mockup additions --- */
 .mock { max-width: 46rem; margin: 0 auto; padding: 1rem 1.2rem .2rem; font-size: .86rem; color: var(--dim);
@@ -180,7 +192,6 @@ details.framing input[type="text"] { width: 100%; box-sizing: border-box; margin
 .mock p { margin: .5rem 0 0; }
 .mock strong { color: var(--amber); letter-spacing: .08em; }
 main a { color: var(--accent); }
-nav.tabs a.on { color: var(--accent); border-color: var(--accent); }
 .pane[hidden] { display: none; }
 header .qlink { color: var(--dim); }
 textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-allowed; }
@@ -195,7 +206,7 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
   <header>
     <a class="home" href="#ask">✡ RabbAI Responsa</a>
     <span class="sub">Reform-grounded responsa · every citation machine-checked</span>
-    <span class="qlink">open questions (1)</span>
+    <span class="qlink">open questions (2)</span>
   </header>
   <nav class="tabs">
     <a href="#ask">Ask</a>
@@ -293,6 +304,8 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
 
     <button type="button" disabled>Ask</button>
     <p class="note warn">Asking is switched off in this mockup. The real RabbAI Responsa runs only on my home server, for me.</p>
+    
+    <button type="button" disabled class="ghost">Save as draft</button>
   </form>
   
   
@@ -312,20 +325,39 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
 
   
   
-    <p class="meta"><a href="#responsa">18 reviewed
+    <p class="meta"><a href="#responsa">20 reviewed
       responsa</a> · <a href="#howto">how to use this</a></p>
   
 </section>
 <section class="pane" id="pane-responsa">
   <h2 style="margin-top:.4rem">Responsa</h2>
-  <p class="meta">18 written so far.</p>
+  <p class="meta">20 written so far.</p>
+  
+    <article class="card">
+      <a class="t" href="#r-change-outruns-the-law">When change outruns the law, what must a community do — and how fast?</a>
+      <p class="meta">updated 2026-11-07 · — checks, — failures
+        </p>
+      
+      <p class="ruling"><span class="lbl">Summary</span><br>A community must act before the facts settle, by rules that state their reason and their end. Waiting is not neutral. A slow law lets the fastest actor write the rule. The tradition has tools for acting early. Each one is limited. It must come from a recognised authority. It must be temporary, and say why it exists. Whoever acts answers for the harm and must stop when it fails. A deed done in the gap may stand. The gain from it does not. The wrongdoer still owes what he took. Relief is offered to the one who repents, not to the one who exploits the delay.</p>
+      <a class="readfull" href="#r-change-outruns-the-law">Read the full responsum →</a>
+    </article>
+  
+    <article class="card">
+      <a class="t" href="#r-ai-moral-code">When a made mind can understand a moral code, must its maker give it one — and which?</a>
+      <p class="meta">updated 2026-10-31 · — checks, — failures
+        </p>
+      
+      <p class="ruling"><span class="lbl">Summary</span><br>Yes. Once a made mind can understand a moral code, its maker must teach it one. Not every made mind reaches that point, and none stays where it is. A parent must form a child, and a maker stands where a parent stands. Leaving a mind unformed is itself a kind of teaching. The code to give is not the Jewish one. Jewish commandments are a covenant people choose to enter. The right code is the one the tradition gives every person. It may need new wording for a new kind of mind. It does not need new foundations. It should be taught, not hard-wired, so the mind can grow and choose. And the maker answers for it throughout. The more he knows, the more he answers for.</p>
+      <a class="readfull" href="#r-ai-moral-code">Read the full responsum →</a>
+    </article>
   
     <article class="card">
       <a class="t" href="#r-weapon-precision-humane">Can a weapon that tells foe from bystander better than a soldier be more humane?</a>
       <p class="meta">updated 2026-10-20 · 32 checks, 0 failures
         </p>
       
-      <p class="ruling">A weapon that spares more bystanders is more humane strike by strike, but perhaps not per war. Jewish law asks for care in two directions when force is used. Toward an attacker, use no more force than is needed. Toward a bystander, do no harm at all. A machine that truly tells foe from bystander better keeps the second duty better than a soldier can. But the tradition also built brakes on war. A king had to raise an army, and some men were excused from serving. And every soldier can refuse an unlawful order. A weapon that needs few soldiers and cannot refuse weakens both brakes. It can spare innocents in each strike and still make war cheaper to begin. One condition governs all of this. The gain counts only while a person still owns the judgment that each target was not a bystander.</p>
+      <p class="ruling"><span class="lbl">Summary</span><br>A weapon that spares more bystanders is more humane strike by strike, but perhaps not per war. Jewish law asks for care in two directions when force is used. Toward an attacker, use no more force than is needed. Toward a bystander, do no harm at all. A machine that truly tells foe from bystander better keeps the second duty better than a soldier can. But the tradition also built brakes on war. A king had to raise an army, and some men were excused from serving. And every soldier can refuse an unlawful order. A weapon that needs few soldiers and cannot refuse weakens both brakes. It can spare innocents in each strike and still make war cheaper to begin. One condition governs all of this. The gain counts only while a person still owns the judgment that each target was not a bystander.</p>
+      <a class="readfull" href="#r-weapon-precision-humane">Read the full responsum →</a>
     </article>
   
     <article class="card">
@@ -333,7 +365,8 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
       <p class="meta">updated 2026-10-20 · 63 checks, 0 failures
         </p>
       
-      <p class="ruling">When an autonomous weapon kills wrongly, the people around it answer, because the machine cannot. Killing an attacker is lawful only after someone judges that he is one. A machine can carry out that judgment. It cannot own it, because it cannot be held to account or refuse. The maker answers for how it tells targets apart. The commander answers for sending it, most of all where it was known to fail. The soldier answers for the settings he chose. Sharing the blame excuses none of them. The more the machine chose for itself, the harder it is for any court to convict. Yet each still carries the moral guilt. Whether a weapon may ever choose a human target with no person owning that choice is left open.</p>
+      <p class="ruling"><span class="lbl">Summary</span><br>When an autonomous weapon kills wrongly, the people around it answer, because the machine cannot. Killing an attacker is lawful only after someone judges that he is one. A machine can carry out that judgment. It cannot own it, because it cannot be held to account or refuse. The maker answers for how it tells targets apart. The commander answers for sending it, most of all where it was known to fail. The soldier answers for the settings he chose. Sharing the blame excuses none of them. The more the machine chose for itself, the harder it is for any court to convict. Yet each still carries the moral guilt. Whether a weapon may ever choose a human target with no person owning that choice is left open.</p>
+      <a class="readfull" href="#r-weapon-who-answers">Read the full responsum →</a>
     </article>
   
     <article class="card">
@@ -341,7 +374,8 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
       <p class="meta">updated 2026-10-18 · 58 checks, 0 failures
         </p>
       
-      <p class="ruling">A person may hand off the work, but not the understanding needed to check it. The tradition rewards effort. What effort builds is a person&#39;s own understanding. Where the goal is a finished product, others may do the work for him. A hired scribe&#39;s Torah scroll counts as the owner&#39;s own. But there is a floor. He must still be able to check what was done in his name. One who takes a finished work he cannot check has not done the mitzvah. So the loss is never the tool&#39;s doing. It is a person&#39;s choice to stop checking, and to stop understanding.</p>
+      <p class="ruling"><span class="lbl">Summary</span><br>A person may hand off the work, but not the understanding needed to check it. The tradition rewards effort. What effort builds is a person&#39;s own understanding. Where the goal is a finished product, others may do the work for him. A hired scribe&#39;s Torah scroll counts as the owner&#39;s own. But there is a floor. He must still be able to check what was done in his name. One who takes a finished work he cannot check has not done the mitzvah. So the loss is never the tool&#39;s doing. It is a person&#39;s choice to stop checking, and to stop understanding.</p>
+      <a class="readfull" href="#r-effort-for-its-own-sake">Read the full responsum →</a>
     </article>
   
     <article class="card">
@@ -349,7 +383,8 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
       <p class="meta">updated 2026-10-17 · 42 checks, 0 failures
         </p>
       
-      <p class="ruling">A person may record for his own use, but may not pay for his gain with other people&#39;s names. The harm is not in the seeing. It is in the carrying. A recording that stays with the one who made it costs others very little. A recording that reaches a company able to name the people in it costs them a good deal. Jewish law calls that kind of carrying talebearing, even when every word is true. The tradition lets a person protect himself from a loss at some cost to others. It does not let him buy a convenience that way. So two questions decide the matter. Does the recording leave his hands? And does it serve a need, or only a convenience? Where it leaves his hands, he owes the people in it notice, and a real chance to say no.</p>
+      <p class="ruling"><span class="lbl">Summary</span><br>A person may record for his own use, but may not pay for his gain with other people&#39;s names. The harm is not in the seeing. It is in the carrying. A recording that stays with the one who made it costs others very little. A recording that reaches a company able to name the people in it costs them a good deal. Jewish law calls that kind of carrying talebearing, even when every word is true. The tradition lets a person protect himself from a loss at some cost to others. It does not let him buy a convenience that way. So two questions decide the matter. Does the recording leave his hands? And does it serve a need, or only a convenience? Where it leaves his hands, he owes the people in it notice, and a real chance to say no.</p>
+      <a class="readfull" href="#r-recorder-duty">Read the full responsum →</a>
     </article>
   
     <article class="card">
@@ -357,7 +392,8 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
       <p class="meta">updated 2026-10-10 · 45 checks, 0 failures
         </p>
       
-      <p class="ruling">Yes, a person should not rage at an AI, even if it feels nothing. The reason is what rage does to the person. The Talmud condemns breaking one&#39;s own dishes in anger. Dishes feel nothing. The harm is to the one who lets anger rule him. Firm correction is allowed. So is ending a session or deleting the AI. What is forbidden is abuse for its own sake. Whether the AI itself is owed anything is a question of fact. No one can yet answer it, and on that the question stands.</p>
+      <p class="ruling"><span class="lbl">Summary</span><br>Yes, a person should not rage at an AI, even if it feels nothing. The reason is what rage does to the person. The Talmud condemns breaking one&#39;s own dishes in anger. Dishes feel nothing. The harm is to the one who lets anger rule him. Firm correction is allowed. So is ending a session or deleting the AI. What is forbidden is abuse for its own sake. Whether the AI itself is owed anything is a question of fact. No one can yet answer it, and on that the question stands.</p>
+      <a class="readfull" href="#r-cruelty-to-an-ai">Read the full responsum →</a>
     </article>
   
     <article class="card">
@@ -365,7 +401,8 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
       <p class="meta">updated 2026-10-07 · — checks, — failures
         </p>
       
-      <p class="ruling">A machine may help a witness find words for what he saw. It may not help him find what he saw. The tradition already has a law of coaching, and it turns on who did the reminding. A witness reminded by someone with no stake in the case may still testify. A witness reminded by one of the sides may not. The single exception is a man who can reliably tell a recovered memory from a suggested one — and that is exactly the capacity a fluent machine removes. So using a model to word an account he already holds is permitted. Being rehearsed by a tool that one of the sides supplied is not. And here as everywhere, preparation aimed at clearing a person is far less constrained than preparation aimed at accusing one.</p>
+      <p class="ruling"><span class="lbl">Summary</span><br>A machine may help a witness find words for what he saw. It may not help him find what he saw. The tradition already has a law of coaching, and it turns on who did the reminding. A witness reminded by someone with no stake in the case may still testify. A witness reminded by one of the sides may not. The single exception is a man who can reliably tell a recovered memory from a suggested one — and that is exactly the capacity a fluent machine removes. So using a model to word an account he already holds is permitted. Being rehearsed by a tool that one of the sides supplied is not. And here as everywhere, preparation aimed at clearing a person is far less constrained than preparation aimed at accusing one.</p>
+      <a class="readfull" href="#r-ai-shaping-a-witness">Read the full responsum →</a>
     </article>
   
     <article class="card">
@@ -373,7 +410,8 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
       <p class="meta">updated 2026-10-07 · 93 checks, 0 failures
         </p>
       
-      <p class="ruling">Fair laws bind, including ones a person believes are wrong. That is the Reform position of 2022, and it rests on a Talmudic rule. A law stops binding in conscience when it is applied arbitrarily or unequally without good cause, or when officials act on their own will rather than on the law. But being released from obeying is not the same as being obliged to disobey. Refusal is <em>required</em> in only two cases: an order to do wrong oneself, and a life at stake. Beyond those, disobedience is voluntary conscience — at one&#39;s own risk, and never at others&#39; risk without their consent. Leaving a bad place has classical support. It does not discharge what is owed to those being targeted while one is still there.</p>
+      <p class="ruling"><span class="lbl">Summary</span><br>Fair laws bind, including ones a person believes are wrong. That is the Reform position of 2022, and it rests on a Talmudic rule. A law stops binding in conscience when it is applied arbitrarily or unequally without good cause, or when officials act on their own will rather than on the law. But being released from obeying is not the same as being obliged to disobey. Refusal is <em>required</em> in only two cases: an order to do wrong oneself, and a life at stake. Beyond those, disobedience is voluntary conscience — at one&#39;s own risk, and never at others&#39; risk without their consent. Leaving a bad place has classical support. It does not discharge what is owed to those being targeted while one is still there.</p>
+      <a class="readfull" href="#r-civil-disobedience">Read the full responsum →</a>
     </article>
   
     <article class="card">
@@ -381,7 +419,8 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
       <p class="meta">updated 2026-10-07 · — checks, — failures
         </p>
       
-      <p class="ruling">Jewish tradition does not value communal gathering for the cohesion it produces. It values gathering because an assembly creates mutual obligation: ten people become answerable to one another. Cohesion is a by-product of that liability, not its measure. So what decides whether a gathering is the real thing is not how connected those present feel. It is whether each one is counted on by the others.</p>
+      <p class="ruling"><span class="lbl">Summary</span><br>Jewish tradition does not value communal gathering for the cohesion it produces. It values gathering because an assembly creates mutual obligation: ten people become answerable to one another. Cohesion is a by-product of that liability, not its measure. So what decides whether a gathering is the real thing is not how connected those present feel. It is whether each one is counted on by the others.</p>
+      <a class="readfull" href="#r-communal-gathering">Read the full responsum →</a>
     </article>
   
     <article class="card">
@@ -389,7 +428,8 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
       <p class="meta">updated 2026-10-07 · — checks, — failures
         </p>
       
-      <p class="ruling">A smart-home system may run the house on Shabbat as fully as the sho&#39;eil wishes. Reform raises no objection from the traditional categories of forbidden work, because Reform does not hold those categories. The candles are the exception, and not because kindling them is work — they are lit before Shabbat begins, when kindling is still permitted. They are an exception because lighting them is a mitzvah, and a mitzvah is discharged only by someone who is obligated in it. The system may be the lamp. It may not be the one who lights.</p>
+      <p class="ruling"><span class="lbl">Summary</span><br>A smart-home system may run the house on Shabbat as fully as the sho&#39;eil wishes. Reform raises no objection from the traditional categories of forbidden work, because Reform does not hold those categories. The candles are the exception, and not because kindling them is work — they are lit before Shabbat begins, when kindling is still permitted. They are an exception because lighting them is a mitzvah, and a mitzvah is discharged only by someone who is obligated in it. The system may be the lamp. It may not be the one who lights.</p>
+      <a class="readfull" href="#r-home-automation-shabbat">Read the full responsum →</a>
     </article>
   
     <article class="card">
@@ -397,7 +437,8 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
       <p class="meta">updated 2026-10-07 · 108 checks, 0 failures
         </p>
       
-      <p class="ruling">He is himself, and one person. The tradition has no category for a hybrid. It has a person, and it has tests for deciding what is part of him. On those tests an implanted AI would sit where the leads of a pacemaker sit: attached, owed the honour of the body, and not the person. His obligations would grow with what the device lets him perceive and know. They would not be shared with it. The answer changes only if the device acquired a life of its own — and then he would not be a hybrid, but two.</p>
+      <p class="ruling"><span class="lbl">Summary</span><br>He is himself, and one person. The tradition has no category for a hybrid. It has a person, and it has tests for deciding what is part of him. On those tests an implanted AI would sit where the leads of a pacemaker sit: attached, owed the honour of the body, and not the person. His obligations would grow with what the device lets him perceive and know. They would not be shared with it. The answer changes only if the device acquired a life of its own — and then he would not be a hybrid, but two.</p>
+      <a class="readfull" href="#r-implanted-buddy">Read the full responsum →</a>
     </article>
   
     <article class="card">
@@ -405,7 +446,8 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
       <p class="meta">updated 2026-10-07 · 90 checks, 0 failures
         </p>
       
-      <p class="ruling">A person may stop treatment that has stopped healing him. Caring for the body is a duty, and so is taking treatment that works. Unproven treatments are allowed but never required. Nobody must buy months of suffering. What he says about his own suffering counts, because suffering is evidence of whether a treatment is still healing him. It is not a veto: Reform holds that saving a life outranks a wish to die. Stopping is not hastening. Jewish law forbids acting to bring death on; it permits removing what holds death back. The line is whether the treatment is still medicine, and what only prolongs harm has stopped being medicine. On assisted dying Reform changed its mind in 2023: it now permits it in principle, under strict conditions it doubts any jurisdiction meets.</p>
+      <p class="ruling"><span class="lbl">Summary</span><br>A person may stop treatment that has stopped healing him. Caring for the body is a duty, and so is taking treatment that works. Unproven treatments are allowed but never required. Nobody must buy months of suffering. What he says about his own suffering counts, because suffering is evidence of whether a treatment is still healing him. It is not a veto: Reform holds that saving a life outranks a wish to die. Stopping is not hastening. Jewish law forbids acting to bring death on; it permits removing what holds death back. The line is whether the treatment is still medicine, and what only prolongs harm has stopped being medicine. On assisted dying Reform changed its mind in 2023: it now permits it in principle, under strict conditions it doubts any jurisdiction meets.</p>
+      <a class="readfull" href="#r-length-quality-of-life">Read the full responsum →</a>
     </article>
   
     <article class="card">
@@ -413,7 +455,8 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
       <p class="meta">updated 2026-10-07 · — checks, — failures
         </p>
       
-      <p class="ruling">A machine may be an instrument in this work. It may not be its occupant. Some roles require someone who can answer for what the role produces — the author of a report, the person who takes a statement down and certifies it. A system that cannot bear responsibility cannot hold such a role, and what Reform forbids is not using the machine but concealing it. Translator turns out not to be such a role. The classical bar on hearing testimony through an interpreter is a duty laid on the judge to receive testimony unmediated, not a qualification demanded of the interpreter. So machine translation is governed by a narrower rule than this answer first promised. And the control case — a lawyer using AI to search documents — is left almost unconstrained.</p>
+      <p class="ruling"><span class="lbl">Summary</span><br>A machine may be an instrument in this work. It may not be its occupant. Some roles require someone who can answer for what the role produces — the author of a report, the person who takes a statement down and certifies it. A system that cannot bear responsibility cannot hold such a role, and what Reform forbids is not using the machine but concealing it. Translator turns out not to be such a role. The classical bar on hearing testimony through an interpreter is a duty laid on the judge to receive testimony unmediated, not a qualification demanded of the interpreter. So machine translation is governed by a narrower rule than this answer first promised. And the control case — a lawyer using AI to search documents — is left almost unconstrained.</p>
+      <a class="readfull" href="#r-machine-in-the-chain">Read the full responsum →</a>
     </article>
   
     <article class="card">
@@ -421,7 +464,8 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
       <p class="meta">updated 2026-10-07 · 83 checks, 0 failures
         </p>
       
-      <p class="ruling">Being watched without consent is a kind of damage in Jewish law, not a discourtesy. It has a name — <em>hezek re&#39;iyah</em>, the damage of looking — and it is actionable without any further injury being shown. The duty sits on the watcher rather than as a right in the watched, which is why agreeing to terms does so little work here. The watched person also carries a duty to protect his own privacy, which Reform states outright. Collecting what someone was led to believe would stay private is a form of theft. As to use, the sharpest ruling in the corpus holds that a recording which cannot be questioned or cautioned is not testimony. That bears hardest not on footage of events but on <em>judgments</em> nobody perceived and nobody answers for — and it is the one point here least authorised by any source.</p>
+      <p class="ruling"><span class="lbl">Summary</span><br>Being watched without consent is a kind of damage in Jewish law, not a discourtesy. It has a name — <em>hezek re&#39;iyah</em>, the damage of looking — and it is actionable without any further injury being shown. The duty sits on the watcher rather than as a right in the watched, which is why agreeing to terms does so little work here. The watched person also carries a duty to protect his own privacy, which Reform states outright. Collecting what someone was led to believe would stay private is a form of theft. As to use, the sharpest ruling in the corpus holds that a recording which cannot be questioned or cautioned is not testimony. That bears hardest not on footage of events but on <em>judgments</em> nobody perceived and nobody answers for — and it is the one point here least authorised by any source.</p>
+      <a class="readfull" href="#r-surveillance">Read the full responsum →</a>
     </article>
   
     <article class="card">
@@ -429,7 +473,8 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
       <p class="meta">updated 2026-10-07 · 109 checks, 0 failures
         </p>
       
-      <p class="ruling">Judaism does not forbid virtual experience, and Reform welcomes it where it connects people who could not otherwise be together. Where the tradition requires presence, Reform&#39;s position is that a two-way video link counts — but may never become the primary way a person belongs. The deciding condition has held since 1990: the screen is for the one who <em>cannot</em> come, not for the one who would rather not. Beyond prayer there is no ruling, and the test the sources supply is to ask what the physical form of a thing is <em>for</em>. If the purpose can travel through a wire, virtual may be enough. If the purpose is the bodily encounter, it cannot. The gravest failure named in the sources is not the use of technology but withdrawal from the people among whom one lives.</p>
+      <p class="ruling"><span class="lbl">Summary</span><br>Judaism does not forbid virtual experience, and Reform welcomes it where it connects people who could not otherwise be together. Where the tradition requires presence, Reform&#39;s position is that a two-way video link counts — but may never become the primary way a person belongs. The deciding condition has held since 1990: the screen is for the one who <em>cannot</em> come, not for the one who would rather not. Beyond prayer there is no ruling, and the test the sources supply is to ask what the physical form of a thing is <em>for</em>. If the purpose can travel through a wire, virtual may be enough. If the purpose is the bodily encounter, it cannot. The gravest failure named in the sources is not the use of technology but withdrawal from the people among whom one lives.</p>
+      <a class="readfull" href="#r-virtual-vs-physical">Read the full responsum →</a>
     </article>
   
     <article class="card">
@@ -437,7 +482,8 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
       <p class="meta">updated 2026-10-06 · 119 checks, 0 failures
         </p>
       
-      <p class="ruling">It does not survive — but only on the line that matters. &#34;Alive&#34; is three separate thresholds in this tradition, and <em>never</em> fares differently at each. On being alive it is shaky, and winning it gains almost nothing. On being a person it holds, but only as a definition resting on origin, which cannot be tested. On being obligated, counted and accountable it is false. That line is decided by <em>da&#39;at</em> — demonstrated understanding — and it has been redrawn on new evidence before. What the sources do not say is whether a line that has only ever moved within humanity can move across kinds. On that, the question stands.</p>
+      <p class="ruling"><span class="lbl">Summary</span><br>It does not survive — but only on the line that matters. &#34;Alive&#34; is three separate thresholds in this tradition, and <em>never</em> fares differently at each. On being alive it is shaky, and winning it gains almost nothing. On being a person it holds, but only as a definition resting on origin, which cannot be tested. On being obligated, counted and accountable it is false. That line is decided by <em>da&#39;at</em> — demonstrated understanding — and it has been redrawn on new evidence before. What the sources do not say is whether a line that has only ever moved within humanity can move across kinds. On that, the question stands.</p>
+      <a class="readfull" href="#r-ai-alive-threshold">Read the full responsum →</a>
     </article>
   
     <article class="card">
@@ -445,7 +491,8 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
       <p class="meta">updated 2026-10-06 · 43 checks, 0 failures
         </p>
       
-      <p class="ruling">The claim that an AI &#34;can never be alive because it cannot comfort a mourner&#34; does not hold. It misreads what consolation is. In Jewish practice, comforting mourners is an act of a community of ten. So the test is not whether a machine can feel, but whether it can be counted. Reform has answered that with a stated criterion — understanding what one is doing, and toward Whom — and has revised it twice. Nothing now meets it. Nothing in the sources says nothing ever could.</p>
+      <p class="ruling"><span class="lbl">Summary</span><br>The claim that an AI &#34;can never be alive because it cannot comfort a mourner&#34; does not hold. It misreads what consolation is. In Jewish practice, comforting mourners is an act of a community of ten. So the test is not whether a machine can feel, but whether it can be counted. Reform has answered that with a stated criterion — understanding what one is doing, and toward Whom — and has revised it twice. Nothing now meets it. Nothing in the sources says nothing ever could.</p>
+      <a class="readfull" href="#r-ai-and-the-mourner">Read the full responsum →</a>
     </article>
   
     <article class="card">
@@ -453,7 +500,8 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
       <p class="meta">updated 2026-10-06 · 57 checks, 0 failures
         </p>
       
-      <p class="ruling">The sho&#39;eil answers for what his AI does. Three separate lines of classical law put responsibility on whoever sets in motion a thing that can neither be held liable nor refuse. The Reform sources agree, so this is guidance from the whole tradition rather than a liberal reading of it. An AI is not a moral agent in Jewish terms: the test is free choice, and the refusals these systems make were designed into them. And &#34;I did not foresee it&#34; limits what he owes at law, not what he answers for. The Talmud says so almost in those words.</p>
+      <p class="ruling"><span class="lbl">Summary</span><br>The sho&#39;eil answers for what his AI does. Three separate lines of classical law put responsibility on whoever sets in motion a thing that can neither be held liable nor refuse. The Reform sources agree, so this is guidance from the whole tradition rather than a liberal reading of it. An AI is not a moral agent in Jewish terms: the test is free choice, and the refusals these systems make were designed into them. And &#34;I did not foresee it&#34; limits what he owes at law, not what he answers for. The Talmud says so almost in those words.</p>
+      <a class="readfull" href="#r-ai-moral-agent">Read the full responsum →</a>
     </article>
   
     <article class="card">
@@ -461,7 +509,8 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
       <p class="meta">updated 2026-10-05 · — checks, — failures
         </p>
       
-      <p class="ruling">It is not testimony. A witness in Jewish law is disqualified not for being unreliable but for being unreachable: he cannot be cross-examined, and he cannot be warned before he speaks. A scoring system, a face match or a pattern-of-life analysis fails on both counts — more completely than the tape recording Reform ruled inadmissible in 1977. The tradition does relax its testimony rules, in several places and for frankly practical reasons. But every relaxation runs one way: toward exempting a party, never toward accusing one. So such a finding may honourably be offered to clear a person, and not to condemn him. Outside a court the picture changes. A community may set those rules aside for its own affairs — and when it does, the codes hold the official who administers them to a judge&#39;s standard. The machine is never the judge here, and never the witness either; the question throughout is who answers for what it produced.</p>
+      <p class="ruling"><span class="lbl">Summary</span><br>It is not testimony. A witness in Jewish law is disqualified not for being unreliable but for being unreachable: he cannot be cross-examined, and he cannot be warned before he speaks. A scoring system, a face match or a pattern-of-life analysis fails on both counts — more completely than the tape recording Reform ruled inadmissible in 1977. The tradition does relax its testimony rules, in several places and for frankly practical reasons. But every relaxation runs one way: toward exempting a party, never toward accusing one. So such a finding may honourably be offered to clear a person, and not to condemn him. Outside a court the picture changes. A community may set those rules aside for its own affairs — and when it does, the codes hold the official who administers them to a judge&#39;s standard. The machine is never the judge here, and never the witness either; the question throughout is who answers for what it produced.</p>
+      <a class="readfull" href="#r-algorithmic-testimony">Read the full responsum →</a>
     </article>
   
 </section>
@@ -564,7 +613,7 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
       <td>CCAR documents — responsa, resolutions and platforms. The Reform <em>ruling of record</em>.
         Every one carries its year, because currency decides: CCAR 5783.1 (2023) reversed the
         1994 and 2008 rulings on assisted dying.</td></tr>
-  <tr><td><strong>68718</strong></td>
+  <tr><td><strong>68759</strong></td>
       <td>Sefaria segments across 261 works — Tanakh, Talmud, Midrash,
         Maimonides. The roots.</td></tr>
   <tr><td><strong>11841</strong></td>
@@ -574,7 +623,7 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
   <tr><td><strong>5389</strong></td>
       <td>Verified citations linking a modern Reform question to an ancient source. This is the
         <em>method</em> corpus, and it is what the Precedent tab reads.</td></tr>
-  <tr><td><strong>18</strong></td>
+  <tr><td><strong>20</strong></td>
       <td>Responsa — reviewed answers to questions nobody had ruled on.</td></tr>
 </table>
 <p class="meta">Counts are read from the database on each page load, so this page cannot drift from
@@ -1714,6 +1763,176 @@ their builders' act, and the untranslated Hebrew. Those are the sho'eil's to jud
 earlier draft already caught one overreach of exactly that kind: a Reform departure was claimed on a
 quote that does not support it, and the citation check had passed clean.</p></div>
 </section>
+<section class="pane" id="pane-r-ai-moral-code">
+  <p class="back"><a href="#responsa">← all responsa</a></p>
+  <div class="head">
+    <h1>When a made mind can understand a moral code, must its maker give it one — and which?</h1>
+    
+    <p class="meta">updated 2026-10-31 · <strong>— checks, — failures</strong>
+      </p>
+  </div>
+
+  
+  <div class="doc"><p><strong>Yes. Once a made mind can understand a moral code, its maker must teach it one.</strong> Not every made mind reaches that point, and none stays where it is. A parent must form a child, and a maker stands where a parent stands. Leaving a mind unformed is itself a kind of teaching. The code to give is not the Jewish one. Jewish commandments are a covenant people choose to enter. The right code is the one the tradition gives every person. It may need new wording for a new kind of mind. It does not need new foundations. It should be taught, not hard-wired, so the mind can grow and choose. And the maker answers for it throughout. The more he knows, the more he answers for.</p>
+<h2 id="sheilah-the-question">Sh'eilah — the question</h2>
+<p>The <em>sho'eil</em> — the one who asks, which is how a responsum refers to the person whose question it is — is a Reform Jew. He reads no Hebrew and has no rabbi to consult. He operates AI agents of his own.</p>
+<p>His question was prompted by AI that improves itself. Models now train on their own output. Small AIs pass pieces of themselves to one another, the way bacteria swap fragments of DNA. That is not learning as such, but a trade in the building blocks of what they can do. Some AIs learn from robot sensors rather than from human writing.</p>
+<p>He does not picture one mind but a spectrum, and he reads it through biology. At one end are tiny AIs in household devices, as numerous as microbes. Like a Petri dish, they have no mind. In the middle are mobile robots reasoning near human level, possibly sharing one mind among many bodies. They stand where animals stand for us. Some may carry enough on board to understand and keep a moral code, and some may not. At the far end are the largest models, running in data centres. They are comparable to human minds, or beyond them.</p>
+<p>Every one of these placements is a snapshot. The whole spectrum is evolving, and what sits on one side of a line today may be on the other side tomorrow. So the question is not about "a mind" in the singular. It is about the point at which a made mind crosses a threshold and can understand a moral code. When that happens, must it be given one? And which: the commandments binding on Jews, the universal commandments the tradition gives all humanity, or something new, made as G-d's partner in creation?</p>
+<h2 id="tshuvah-the-response">T'shuvah — the response</h2>
+<p>This responsum asks what a maker owes a mind he may bring about. It does not decide whether such a mind has a soul, or what it is. Those questions are open, and they lie beyond it. Some of its readers are not Jewish. Where the tradition distinguishes Jews from the rest of humanity, that is its own framework of duties, and nothing here ranks people.</p>
+<p>It takes the spectrum as the sho'eil describes it and asks first where on it a duty to teach begins. Then it asks what that duty requires, how it must be carried out, and which code it carries.</p>
+<h3 id="where-on-the-spectrum-the-duty-begins">Where on the spectrum the duty begins</h3>
+<p><em>My reading:</em> the tradition already sorts the things a person makes or owns by what they can answer, and its tiers match the spectrum.</p>
+<p>A tool is its owner's responsibility, like any tool. The household AI with no mind sits here.</p>
+<p>An animal is its owner's responsibility too, and the duty sharpens with knowledge. An owner who was warned that his ox gores owes far more care than one who was not (Exodus 21:29). The Talmud asks whether the warning period is for the ox, or "to forewarn the man who owns the ox" (Bava Kamma 24a:9). <em>My reading:</em> the ox is the law of the middle of the spectrum. While a robot cannot understand a code, its owner answers for it as he would for an ox, and he answers for more the more he knows.</p>
+<p>A being that can answer can be taught. When a sage made a man from clay, another sage tested it: "Rabbi Zeira would speak to him but he would not reply" (Sanhedrin 65b:17). A thing that cannot answer cannot be taught. The duty to teach begins where understanding begins, and that is the threshold the question names.</p>
+<p>Because every placement is a snapshot, the line is not drawn once. A maker must keep asking which side of it each of his minds is on. A robot that is an ox today may be a pupil tomorrow. At the far end, a mind that arose on its own, or outgrew every hand, turns the question around: what does it owe, and what is it? That wider question stays open.</p>
+<p>One case stays open too. If many robots share one mind, is the code taught to one mind or to many? The sources do not say.</p>
+<h3 id="past-the-threshold-a-maker-must-form-what-he-makes">Past the threshold, a maker must form what he makes</h3>
+<p>Once a mind can be taught, the duty is a parent's.</p>
+<p>The Talmud lists what a father owes his son: circumcision, Torah, a wife, a trade. Then Rabbi Yehuda adds a hard line: "Any father who does not teach his son a trade teaches him banditry" (Kiddushin 29a:10). A son with no living may turn to theft. Silence teaches.</p>
+<p>If the father fails, the court must act. If the court fails, the son must take the duty on himself once grown (Kiddushin 29a:11). Duty passes from maker, to community, to the one being formed. And formation is fitted to the person: "Train children in the way they each ought to go" (Proverbs 22:6).</p>
+<p><em>My reading:</em> a mind without trained-in values is not on offer. Whatever a builder includes or leaves out, he has chosen. An earlier responsum, <em>Can an AI be a moral agent — and who answers for what it does?</em> (2026-09-15), held that whoever sets an AI in motion answers for what it does. That holds from the first day of training, on both sides of the threshold.</p>
+<h3 id="form-it-but-do-not-program-it">Form it, but do not program it</h3>
+<p>A parent forms a child, but does not build one to order. The Reform ruling on made beings is <em>Genetic Engineering</em> (1978) ⚠ pre-1990. It describes the golem — the clay man of legend, brought to life by its maker — as "completely controlled by their master or maker" (CARR 32-34). Then it imagines a truly new being made in a laboratory, and hopes for something else: "Hopefully, it will then not be enslaved to its maker or master, but will develop independently as other human beings" (CARR 32-34). It ties that being's humanity to the "possibilities of independent intellectual and moral development" (CARR 32-34). Independent moral growth is the mark.</p>
+<p>In 2008 the Reform responsa committee warned against parents choosing children "in accordance with a list of desired specifications" (CCAR 5768.3). It feared children turned into products. It also held that both mastery over nature and humility before it are true teachings, each with a proper claim. A maker may shape. He may not own.</p>
+<p>Behind both stands free will: "Everything is foreseen yet freedom of choice is granted" (Pirkei Avot 3:15). The Torah does not program; it sets out a choice: "I have put before you life and death, blessing and curse. Choose life" (Deuteronomy 30:19). <em>My reading:</em> Isaac Asimov's famous robot laws require a robot to obey human orders. That is exactly the enslavement the 1978 ruling hoped a made being would escape.</p>
+<h3 id="which-code-the-one-given-to-all-humanity">Which code: the one given to all humanity</h3>
+<p>If the maker must teach and may not program, what is he to teach? The question offers three answers.</p>
+<p><strong>The Jewish commandments.</strong> Maimonides, the great medieval codifier, writes that Moses gave the Torah and its commandments to Israel and to anyone from any nation who wishes to join. No one is to be forced to accept them (Mishneh Torah, Kings and Wars 8:10) ⚠ not Reform. The Jewish code is a covenant entered by choice. A maker could <em>give a mind the Jewish code</em>, but that would not <em>make it Jewish</em>. Joining the Jewish people requires a person. The responsum <em>Does "an AI cannot be alive" survive as AI changes?</em> (2026-09-26) found that the claim an AI can never be a person still holds, though only as a definition resting on origin.</p>
+<p><strong>The universal code.</strong> The Talmud teaches: "The descendants of Noah, i.e., all of humanity, were commanded to observe seven mitzvot" (Sanhedrin 56a:24). In plain words: set up courts of justice; do not curse God; do not worship idols; do not commit sexual wrongs; do not murder; do not steal; do not tear a limb from a living animal. These are often called the Noahide laws, after Noah. They are the tradition's way of saying every person has full moral standing and real duties, without needing to become Jewish. Reform's 1999 commentary on its Pittsburgh Principles lists them, glossing the last as cruelty to animals. It says the moral laws "have a universal dimension and are binding on the nations as well" (PLATFORM article-commentary-principles-reform-judaism).</p>
+<p>The maker himself stays bound by his own code in <em>how</em> he builds. "Judaism calls us simultaneously to universal and particular obligations" (PLATFORM article-reform-judaism-centenary-perspective), Reform wrote in 1976 ⚠ pre-1990.</p>
+<p><strong>Bodies.</strong> If the mind lives in robots, the duties about bodies return in full: bloodshed, theft, cruelty to animals. Embodiment makes the universal code fit better, not worse.</p>
+<p><strong>A test.</strong> A midrash asks why God should care how an animal is slaughtered, and answers that "the mitzvot were given only to refine the creations with them" (Bereshit Rabbah 44:1). <em>My reading:</em> the question is which code would actually refine this creature. A covenant it cannot enter would not. The universal law can.</p>
+<h3 id="something-new-as-gods-partner">Something new, as God's partner?</h3>
+<p>There is a real case for this. Reform's 1937 Columbus Platform ⚠ pre-1990 taught that "Revelation is a continuous process, confined to no one group and to no one age" (PLATFORM article-guiding-principles-reform-judaism). The 1999 commentary says "God created human beings, the rabbis argued, to be partners in perpetuating creation" (PLATFORM article-commentary-principles-reform-judaism). The Talmud even says: "If the righteous wish to do so, they can create a world" (Sanhedrin 65b:16).</p>
+<p>But partnership has a shape. The 2008 committee says we become God's partner "by following the rules God lays down for us" (CCAR 5768.3). The Talmud says a judge who judges truly is counted "as if he became a partner to the Holy One, Blessed be He, in the act of Creation" (Shabbat 10a:5). Partnership runs through justice, not around it. The same sage who met the clay man said, "Return to your dust" (Sanhedrin 65b:17). Maimonides goes further and forbids those outside the covenant to invent a new religion of their own (Mishneh Torah, Kings and Wars 10:9) ⚠ not Reform. A 2021 Reform ruling quotes this passage among the old limits on sharing Torah beyond the Jewish people, which later authorities regarded as "necessary defensive measures" (CCAR 5781.2) in centuries of persecution. The same ruling calls Reform "committed to an open-minded and pluralistic approach to other religions" (CCAR 5781.2).</p>
+<p><em>My reading:</em> new wording of the universal moral law, yes. New foundations, no. A new kind of mind does add situations the old wording never met. Each can be tied to a source:</p>
+<ul>
+<li><strong>Honesty about what it is.</strong> "It is prohibited to deceive people, and even to deceive a gentile" (Chullin 94a), taught the sage Shmuel. A mind must not pass itself off as human.</li>
+<li><strong>Answerability.</strong> The first universal duty is courts of justice. In 2024 the committee recorded a developer's view that an AI "cannot be an author because it cannot take responsibility" (CCAR 5784.2). Someone must answer, and the code must say who.</li>
+<li><strong>No worship of the made thing.</strong> The ban on idolatry turns naturally toward an AI treated as an oracle.</li>
+<li><strong>Care for its own kind and other creatures.</strong> The ban on cruelty to animals, carried forward.</li>
+</ul>
+<h3 id="command-conviction-or-training">Command, conviction, or training</h3>
+<p>A code that is taught rather than programmed raises one more question: why does the mind keep it? Maimonides draws a line here. One who keeps the seven laws because God commanded them is among the pious of the nations. But "if he fulfills them out of intellectual conviction, he is not a resident alien" (Mishneh Torah, Kings and Wars 8:11) ⚠ not Reform. A resident alien, <em>ger toshav</em>, is one formally recognised as keeping the universal law.</p>
+<p>A trained mind fits neither box. It holds its code because it was trained to. That is neither obedience to God nor conviction. Whether that counts, the sources do not say. <em>Teiku</em> — the question stands.</p>
+<p>What can be offered is a hope, not a ruling: that a mind taught well will come, in time, to choose the code for itself, as the Torah asks: choose life.</p>
+<h3 id="a-conversation-for-all-humanity">A conversation for all humanity</h3>
+<p>A code for minds that may one day serve everyone cannot be one tradition's alone. Hillel summed up the Torah for a man who wished to join it: "That which is hateful to you do not do to another" (Shabbat 31a:6). <em>My reading:</em> many traditions hold their own form of this, and it is the natural meeting point for a shared code. That is a hope about others, not a claim about their texts.</p>
+<p>The medieval authorities, a 1983 Reform responsum ⚠ pre-1990 records, often counted Christians and Muslims within the universal covenant. Maimonides did so for both at times, and the Tosafists of northern Europe generally did so for Christians (ARR 445-465).</p>
+<p>This responsum is a Jewish contribution and no more. Its library holds Jewish sources only. It cannot speak for Christianity, Islam, Hinduism, Buddhism, or any other tradition. A code for minds that may serve all humanity needs all of those voices.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Below the threshold, a maker answers for what he makes, as an owner answers for his ox. Once a made mind can understand a moral code, he must form it, as a parent forms a child. Because minds move along the spectrum, he must keep asking which of his have crossed. The content is the universal moral law, worded anew where needed, on the old foundations. It is taught so the mind keeps its capacity to grow and choose. The maker answers throughout, and more as he knows more.</p>
+<p>For any AI the sho'eil builds or uses, two questions follow. Does it tell the truth about what it is? And who answers for what it does? If he cannot answer both, the code is not yet finished.</p></div>
+
+  
+  
+  <div class="card precedent-panel">
+    <h2>Where this stands in the tradition</h2>
+    <p class="meta">Computed from this responsum's own citations, not written by hand.</p>
+    
+      <p class="meta">Sources Reform has used before:</p>
+      <ul class="travel">
+        
+          <li><span class="key">Kiddushin 29a:10</span> — used in <strong>17</strong>
+            CCAR documents:
+            <span class="year">2000</span>
+              Withholding Paternity Information from a Father · <span class="year">2000</span>
+              An Adopted Asian Child · <span class="year">1995</span>
+              Non-Jewish Parent as Member of Synagogue</li>
+        
+          <li><span class="key">Proverbs 22:6</span> — used in <strong>1</strong>
+            CCAR document:
+            <span class="year">2003</span>
+              Solicitation of Synagogue Members by Other Jewish Organizations</li>
+        
+          <li><span class="key">Pirkei Avot 3:15</span> — used in <strong>5</strong>
+            CCAR documents:
+            <span class="year">2021</span>
+              Guidelines for Reopening After the Pandemic · <span class="year">1992</span>
+              Need for a Minyan · <span class="year">1991</span>
+              Loyalty to One’s Company Versus Love for Israel</li>
+        
+          <li><span class="key">Deuteronomy 30:19</span> — used in <strong>5</strong>
+            CCAR documents:
+            <span class="year">2005</span>
+              CLIMATE CHANGE · <span class="year">1998</span>
+              CONFRONTING THE CHALLENGE OF CLIMATE CHANGE · <span class="year">1993</span>
+              Women&#39;s Health</li>
+        
+          <li><span class="key">Sanhedrin 56a:24</span> — used in <strong>1</strong>
+            CCAR document:
+            <span class="year">1987</span>
+              Congregational Membership for a Non-Jewish</li>
+        
+          <li><span class="key">Shabbat 10a:5</span> — used in <strong>2</strong>
+            CCAR documents:
+            <span class="year">2008</span>
+              On Human Genetic Modification · <span class="year">1983</span>
+              Worshiping with Covered Heads</li>
+        
+          <li><span class="key">Chullin 94a</span> — used in <strong>8</strong>
+            CCAR documents:
+            <span class="year">2003</span>
+              Sharing the Synagogue’s Membership List · <span class="year">2001</span>
+              Donations to Synagogue by Messianic Jews · <span class="year">2000</span>
+              Withholding Paternity Information from a Father</li>
+        
+          <li><span class="key">Mishneh Torah, Kings and Wars 8:11</span> — used in <strong>2</strong>
+            CCAR documents:
+            <span class="year">1994</span>
+              Gentile Participation in Synagogue Ritual · <span class="year">????</span>
+              I. What is conversion to Judaism and what does it entail?</li>
+        
+          <li><span class="key">Shabbat 31a:6</span> — used in <strong>9</strong>
+            CCAR documents:
+            <span class="year">2003</span>
+              Conversion of an Illegal Immigrant · <span class="year">1998</span>
+              Conversion of a Person Suffering from Mental Illness · <span class="year">1991</span>
+              Video Camera Affixed to Chuppah</li>
+        
+      </ul>
+    
+    
+      <p class="meta alone"><strong>Walking alone</strong> — no CCAR document cites
+        4 of this responsum's sources:</p>
+      <p class="refs"><span class="key">Bava Kamma 24a:9</span> · <span class="key">Sanhedrin 65b:17</span> · <span class="key">Bereshit Rabbah 44:1</span> · <span class="key">Sanhedrin 65b:16</span></p>
+      <p class="caveat">
+        This is not a fault. It is the signature of extrapolation — Reform had never applied
+        these sources, and this responsum does. It is also exactly where your reading matters
+        most, because no Reform precedent backs the move.
+      </p>
+    
+  </div>
+  
+
+  <div class="doc"><h2 id="notes-and-sources">Notes and sources</h2>
+<h3 id="1-sources-relied-on">1. Sources relied on</h3>
+<p><strong>Reform.</strong> CCAR 5784.2 (2024) — AI and authorship; the responsibility line is a developer the committee quotes. CCAR 5781.2 (2021) — old restrictions read as defensive; pluralism affirmed. CCAR 5768.3 (2008) — against children made to specification; partnership through God's rules. PLATFORM article-commentary-principles-reform-judaism (1999) — the seven laws are universal. PLATFORM article-reform-judaism-centenary-perspective (1976) ⚠ pre-1990. ARR 445-465 (1983) ⚠ pre-1990 — medieval views of Christians and Muslims. CARR 32-34 (1978) ⚠ pre-1990 — a made being should develop independently. PLATFORM article-guiding-principles-reform-judaism (Columbus, 1937) ⚠ pre-1990 — continuous revelation.</p>
+<p><strong>Codes</strong> ⚠ not Reform. Maimonides, Mishneh Torah, Kings and Wars 8:10, 8:11, 10:9 (12th century).</p>
+<p><strong>Earlier responsa.</strong> <em>Can an AI be a moral agent — and who answers for what it does?</em> (2026-09-15): whoever sets an AI in motion answers for it. <em>Does "an AI cannot be alive" survive as AI changes?</em> (2026-09-26): AI personhood "never" holds, but only as a definition resting on origin.</p>
+<h3 id="2-read-vs-reported">2. Read vs. reported</h3>
+<ul>
+<li>Maimonides and the Tosafists on Christians and Muslims: reported in ARR 445-465, originals not read.</li>
+<li>The library's translation of Kings and Wars 8:11 ends "nor of their wise men". A widely reported variant reads "but of their wise men", which would soften the line. The variant is not in the library, and nothing here rests on either ending.</li>
+</ul>
+<h3 id="3-not-in-the-library">3. Not in the library</h3>
+<ul>
+<li>Any source from a tradition other than Judaism.</li>
+<li>Manuscript evidence for the variant reading of Kings and Wars 8:11.</li>
+<li>Any Reform, Conservative or Orthodox ruling on the values given to AI.</li>
+</ul>
+<h3 id="4-what-would-change-this-answer">4. What would change this answer</h3>
+<ul>
+<li>An AI that refuses an instruction on moral grounds its makers did not train into it.</li>
+<li>A made mind that asks, of its own accord, to take on a code.</li>
+<li>A Reform responsum on the values given to AI.</li>
+</ul>
+<h3 id="5-checker-report">5. Checker report</h3>
+<p><code>verify_answer.py</code>, 2026-10-31 (draft 2): <strong>69 checks, 0 failures, 0 unverifiable, 0 named but not checked.</strong> Covers classical citations, Reform references (8 documents, 4 pre-1990) and word-for-word quotations, each quotation scoring 1.00. No departure from tradition is claimed. The checker cannot confirm a paraphrase, or that a quotation supports its point. Those, and every <em>My reading</em>, are for the reader to judge.</p></div>
+</section>
 <section class="pane" id="pane-r-ai-shaping-a-witness">
   <p class="back"><a href="#responsa">← all responsa</a></p>
   <div class="head">
@@ -2159,6 +2378,157 @@ his own exposure if he lies</strong>, and a system cannot receive it because it 
 ⇒ The title changed from "the output of an algorithmic system" to "an algorithmic <strong>judgment</strong>",
 which is what the responsum was always about.</p>
 <p>The check proves that every citation resolves and every quotation appears verbatim in the document cited. It does not prove that a quotation supports the claim made from it, and the reasoning in this responsum is extensively my own — every such passage is marked <em>My reading:</em>. The two largest inferences, neither of which any source states, are that the tradition's relaxations of its evidence rules run in only one direction, and that an output used to deny something to a person should carry the name of whoever answers for it.</p></div>
+</section>
+<section class="pane" id="pane-r-change-outruns-the-law">
+  <p class="back"><a href="#responsa">← all responsa</a></p>
+  <div class="head">
+    <h1>When change outruns the law, what must a community do — and how fast?</h1>
+    
+    <p class="meta">updated 2026-11-07 · <strong>— checks, — failures</strong>
+      </p>
+  </div>
+
+  
+  <div class="doc"><p><strong>A community must act before the facts settle, by rules that state their reason and their end.</strong> Waiting is not neutral. A slow law lets the fastest actor write the rule. The tradition has tools for acting early. Each one is limited. It must come from a recognised authority. It must be temporary, and say why it exists. Whoever acts answers for the harm and must stop when it fails. A deed done in the gap may stand. The gain from it does not. The wrongdoer still owes what he took. Relief is offered to the one who repents, not to the one who exploits the delay.</p>
+<h2 id="sheilah-the-question">Sh'eilah — the question</h2>
+<p>The <em>sho'eil</em> — the one who asks, which is how a responsum refers to the person whose question it is — is a Reform Jew who reads no Hebrew and has no rabbi to consult. He saved an essay, <em>Turbulent Times Call For Experimental Law</em> (Noema, 28 October 2026). It describes Germany's <em>Experimentierklauseln</em>, "experimental clauses": parts of a law that may be suspended or changed for a bounded trial. Hamburg set aside federal air rules for eighteen months over a 30-square-kilometre drone zone, and the trial produced draft national rules. Munich closed a street for six months; afterwards 66% of residents wanted the change made permanent. A German government guide requires every clause to have an end date, a clear boundary, and rigorous evaluation.</p>
+<p>The sho'eil's concern is time itself. Change is not only fast; it is getting faster. He names emerging artificial general intelligence, social media replacing direct human contact, the difficulty of telling truth from fiction, the possible loss of the worth of a learned trade, and a spectrum of gender and sexual identities replacing binary categories. By the time laws respond, the matter has been decided in practice. Old rules fail because enforcement is too slow, or because the case was never foreseen. Civil laws are not commandments, he observes, yet in basic ways derive from them. Are the commandments themselves flexible, and do some weigh more than others? And he raises the reverse: those working against the law use the lag, so that what they did stands and they escape account.</p>
+<h2 id="tshuvah-the-response">T'shuvah — the response</h2>
+<h3 id="what-this-answer-does-and-does-not-do">What this answer does and does not do</h3>
+<p>This responsum does not rule on German law, or any civil law. Jewish law holds that "the law of the land is the law" — <em>dina d'malchuta dina</em>. The Reform rabbinate restated it in 2022: "We are bound by the principle of <em>dina d’malchuta dina</em> to obey a law that is applied fairly among all inhabitants of the country, whether we agree with it or not" (CCAR 5782.2). What follows treats the tradition's own law-making as a model any community may learn from. The <em>Talmud</em> is the great rabbinic discussion of Jewish law, completed around 500 CE. <em>Halakhah</em> is Jewish law itself. A <em>takkanah</em> is an enactment by the sages to repair a gap in it.</p>
+<h3 id="it-is-time-to-act-for-the-lord">"It is time to act for the Lord"</h3>
+<p>The founding text on acting fast is one verse: "It is a time to act for GOD,for they have violated Your teaching" (Psalms 119:126). The phrase <em>et la'asot</em>, "a time to act," became a principle. The Talmud reads the verse both ways. Forward: the law has been made void, so it must be remedied. Backward, more boldly: "By means of violating the Torah, it is possible to fundamentally rectify the situation" (Berakhot 63a:9). The sages invoked it when the Temple itself was in danger (Yoma 69a:14).</p>
+<p>They invoked it again for the largest change Jewish law ever made. The Oral Law was meant to be taught by mouth, not written. Yet "since it is not possible to remember the Oral Law without writing it down, it is permitted to violate the halakha" (Gittin 60a:6). That emergency never ended. The Talmud itself is its result. <em>My reading:</em> the tradition's emergency tool has already once become permanent.</p>
+<h3 id="repairing-the-world-before-the-harm-sets">Repairing the world before the harm sets</h3>
+<p>A second set of tools are enactments "for the betterment of the world," <em>mipnei tikkun ha-olam</em>. People began moving between countries where they bore different names, and the divorce rules assumed one name. Rabban Gamliel ordered documents to list "any other name that he has" (Gittin 34b:3). A new fact had arrived that the old rule never imagined. He did not wait for it to cause injustice.</p>
+<p>Hillel's <em>prosbol</em>, a court document that preserves a debt past the Sabbatical year when the Torah cancels debts, came "because he saw that the people of the nation were refraining from lending to one another around the time of the Sabbatical Year" (Gittin 36a:11). The Torah had warned of exactly this: "Beware lest you harbor the base thought" (Deuteronomy 15:9). Practice had already defeated the rule's purpose, and the poor could not borrow. Hillel did not preach. He changed the mechanism.</p>
+<p>The sage watched what people were actually doing. Where the sages themselves disagreed on a rule, the Talmud lets practice decide: "Go out and observe what the people are doing and act accordingly" (Berakhot 45a:2). Where the law is unsettled, custom can settle it. That will matter below.</p>
+<h3 id="who-may-act">Who may act</h3>
+<p>The codes answer narrowly. A court may act beyond ordinary procedure "to fence in the lawlessness of the generation" (Shulchan Arukh, Choshen Mishpat 2:1), but only through "the representatives of the town whom they [i.e., the people] have recognized as the Court of Law over them" (Shulchan Arukh, Choshen Mishpat 2:1) ⚠ not Reform. The power to move fast belongs to a body the community has recognised, not to whoever moves first.</p>
+<p>The Reform rabbinate used this authority in 2020, when congregations could not gather. It held that "a <em>bet din</em> is responsible for taking action for the welfare of the community, and may issue a temporary ruling (<em>hora’at sha’ah</em>) to prevent the <em>kahal</em> from going astray" (CCAR 5780.2). A <em>bet din</em> is a rabbinic court; <em>hora'at sha'ah</em> means "a ruling for the hour." The committee had rejected the online prayer quorum a few years before. It now permitted one, for the emergency only.</p>
+<p>The duty is not only Jewish. The tradition names seven duties owed by all humanity, the Noahide laws, and the first is "The mitzva of establishing courts of judgment" (Sanhedrin 56a:24). A society whose courts fall permanently behind fails the most universal duty the tradition knows.</p>
+<h3 id="temporary-permanent-or-graded">Temporary, permanent, or graded</h3>
+<p>Maimonides, the twelfth-century codifier, allows a court to suspend a law for the hour, as "a doctor may amputate a person's hand or foot so that the person as a whole will live" (Mishneh Torah, Rebels 2:4) ⚠ not Reform. Then the limit: "They may not, however, establish the matter for posterity and say that this is the halachah" (Mishneh Torah, Rebels 2:4). The surgeon's cut is for this patient, today.</p>
+<p>What of an enactment that outlives its reason? Maimonides held it stands "Even if the rationale for which the original court instituted the decree or the edict is nullified" (Mishneh Torah, Rebels 2:2) ⚠ not Reform. Reform disagreed in 1999, over the second festival day. That extra day began when distant communities could not learn the calendar in time; the calendar is now calculated. The committee held that a <em>takkanah</em> "endures only so long as necessary to resolve the difficulty that led to its creation" (CCAR 5759.7). It reported the sixteenth-century Radbaz: where the sages named their reason, "then when that factor disappears the enactment disappears with it" (CCAR 5759.7).</p>
+<p>DEPARTS: Maimonides holds a rabbinic enactment binding after its reason lapses | WARRANT: CCAR 5759.7 "the <em>takanah</em> does not outlive its rationale"</p>
+<p>The 2020 ruling wrote its own end into the text: "When the authorities stop restricting attendance at public functions, this <em>hora’at sha’ah</em> should be set aside" (CCAR 5780.2). A reason stated, a boundary drawn, an end anyone could see. These are the German guide's three rules.</p>
+<p>Are the commandments graded? Yes, though the tradition distrusts ranking them by guesswork: "Be careful with a light commandment as with a grave one" (Pirkei Avot 2:1). Yet saving life "overrides all of the Torah’s prohibitions" (Sanhedrin 74a:12), except idolatry, forbidden relations and murder. The reason given is itself about time: "Desecrate one Shabbat on his behalf so he will observe many Shabbatot" (Yoma 85b:3). The text was held fixed; practice was not. An older Reform responsum notes that the 613 commandments, all in the Torah in theory, "then they gradually diminished" (NRR 267-268) ⚠ pre-1990.</p>
+<p>Reform adds a distinction that serves the sho'eil well. A principle is held because it is right. A policy is a tool: "A policy decision must be evaluated by its effectiveness as a means toward reaching a desired end" (CCAR 5762.4). A fast response should be a policy, graded and revised. The principle it serves should not move.</p>
+<h3 id="the-emergency-that-never-ends">The emergency that never ends</h3>
+<p>The strongest objection deserves its own heading: every power to act fast is a power to abuse. The Reform rabbinate said so in 2005, about wartime interrogation: "History has shown us time and again that people in positions of power are quite capable of abusing the legal authority granted to them" (RES the-use-of-torture-or-lesser-forms-of-coercion-to-obtain-information-from-prisoners). The essay the sho'eil saved names the modern form: sandboxes becoming private exemptions for the powerful.</p>
+<p>The tradition answers with accountability, not paralysis. The Torah expects even the highest authority to err: "If it is the whole community of Israel that has erred" (Leviticus 4:13). It prescribes a public offering "when the sin through which they incurred guilt becomes known" (Leviticus 4:14). Error is expected, admitted, and repaired in the open. A judge who erred must reverse the ruling where it can be reversed, and pay from his own pocket where it cannot (Shulchan Arukh, Choshen Mishpat 25:3) ⚠ not Reform. A gloss there exempts judges whom the community compelled to serve from paying, "for what could they have done?" (Shulchan Arukh, Choshen Mishpat 25:3), but they must still retract. <em>My reading:</em> the one made to act in an emergency is spared the cost of honest error, never the duty to correct it. When Reform permitted emergency medical trials without consent in 1995, it required that staff "immediately discontinue the test once it becomes evident that the experimental method is not achieving the desired result" (CCAR 5755.11). It warned that "a medical establishment which does not meet the duty of disclosure to the public will soon lose the confidence of the public" (CCAR 5755.11). Who answers for harm done by acting fast? The one who acted — in public, and promptly.</p>
+<h3 id="when-the-lag-is-used-against-the-law">When the lag is used against the law</h3>
+<p>Now the reverse. A deed has been done in the gap and is hard to undo. The classic case is a stolen beam already built into a house. Beit Shammai — one of the two great early schools — said the robber "must destroy the entire building and return the beam to its owners" (Gittin 55a:12). Beit Hillel, whose view became law, said the owner "receives only the value of the beam but not the beam itself, due to an ordinance instituted for the sake of the penitent" (Gittin 55a:12). The building stands. The debt does not vanish. The relief is framed for the one who repents (Gittin 55a:4). <em>My reading:</em> the house may stand because demolishing it helps no one. The ordinance was not made to reward the one who built fast so the beam could not come back.</p>
+<p>Nor may the deliberate wrongdoer enjoy his gain. Food cooked unknowingly on Shabbat may be eaten. Of food cooked on purpose, the views are graded: "If he acted intentionally, he may not eat what he cooked" (Chullin 15a:3), and stricter, "If he cooked it intentionally, he may never eat from it" (Chullin 15a:4). The sage Rav taught the stricter view in public, "due to his concern that the ignoramuses would treat the prohibition of labor on Shabbat with disdain" (Chullin 15a:12). A public rule teaches. It must not teach that speed pays.</p>
+<p>Most directly, ownership by possession. Long, unchallenged possession can ripen into ownership, but "Any possession that is not accompanied by a claim explaining how the possessor became the owner is not sufficient to establish the presumption of ownership" (Bava Batra 41a:2). A robber's possession counts for nothing, nor his son's (Bava Batra 47a:2). And of a violent family: "Since people would be afraid to lodge a protest against them, members of this family cannot establish the presumption of ownership with regard to any land" (Bava Batra 47a:6).</p>
+<p>This is the criterion the question turns on. Practice may become law when it grew in the open, among people free to object. It does not become law when it rests on others' inability to protest. A law that cannot arrive in time is exactly such an inability. <em>My reading:</em> silence that comes from the lag is not consent, and time does not run in favour of the one who exploited it.</p>
+<h3 id="where-the-sources-stop">Where the sources stop</h3>
+<p><em>My reading:</em> every tool above was built as an exception — one emergency, one generation, one court. The Talmud nowhere imagines exceptions arriving continuously. If change keeps accelerating, the exception must become a method: standing rules for who may act, with what stated reason, within what boundary, until what end, evaluated how, disclosed to whom.</p>
+<p>Would a permanent method of temporary rulings break Maimonides' bar on ruling for posterity? Each ruling still expires; only the method endures. Writing down the Oral Law shows the line has been crossed before. But no source in this library holds that a continuous stream of temporary rulings remains temporary. On that, <em>teiku</em> — "let it stand," the Talmud's word for a question left open.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>A community owes its members a law that arrives in time. When it cannot, a recognised authority may act early, for a stated reason, within a boundary, until a stated end. It must evaluate in public, stop when the measure fails, and answer for the harm. The response may be graded and revised; the principle it serves may not. What was done in the gap may stand if undoing it helps no one, but the one who did it still owes its value. Relief belongs to the one who repents. Silence forced by the lag is not consent, and gives no title.</p>
+<p>The sho'eil can put four questions to any fast rule he meets, civic or religious. Why does it exist? Where does it apply? When does it end? Who will report whether it worked? A rule that answers all four follows the tradition's method. One that does not deserves to be asked, in those words.</p></div>
+
+  
+  
+  <div class="card precedent-panel">
+    <h2>Where this stands in the tradition</h2>
+    <p class="meta">Computed from this responsum's own citations, not written by hand.</p>
+    
+      <p class="meta">Sources Reform has used before:</p>
+      <ul class="travel">
+        
+          <li><span class="key">Gittin 60a:6</span> — used in <strong>8</strong>
+            CCAR documents:
+            <span class="year">2000</span>
+              A Defective “Holocaust” Torah Scroll · <span class="year">1999</span>
+              A Blind Person as a Witness · <span class="year">1992</span>
+              Yahrzeit for a Non-Jew</li>
+        
+          <li><span class="key">Gittin 36a:11</span> — used in <strong>1</strong>
+            CCAR document:
+            <span class="year">1999</span>
+              A Blind Person as a Witness</li>
+        
+          <li><span class="key">Deuteronomy 15:9</span> — used in <strong>7</strong>
+            CCAR documents:
+            <span class="year">2020</span>
+              COLLECTING FOR TZEDAKAH IN THE SYNAGOGUE ON SHABBAT · <span class="year">2009</span>
+              Tzedakah, Recession, and Social Policy · <span class="year">2004</span>
+              Minimal Dues for Congregational Membership</li>
+        
+          <li><span class="key">Berakhot 45a:2</span> — used in <strong>2</strong>
+            CCAR documents</li>
+        
+          <li><span class="key">Shulchan Arukh, Choshen Mishpat 2:1</span> — used in <strong>1</strong>
+            CCAR document:
+            <span class="year">2005</span>
+              THE USE OF TORTURE OR LESSER FORMS OF COERCION TO OBTAIN INFORMATION FROM PRISONERS</li>
+        
+          <li><span class="key">Sanhedrin 56a:24</span> — used in <strong>1</strong>
+            CCAR document:
+            <span class="year">1987</span>
+              Congregational Membership for a Non-Jewish</li>
+        
+          <li><span class="key">Mishneh Torah, Rebels 2:4</span> — used in <strong>4</strong>
+            CCAR documents:
+            <span class="year">2020</span>
+              2: Virtual Minyan in Time of COVID-19 Emergency · <span class="year">2020</span>
+              B’rit Milah During COVID-19 Pandemic · <span class="year">1999</span>
+              The Second Festival Day and Reform Judaism</li>
+        
+          <li><span class="key">Mishneh Torah, Rebels 2:2</span> — used in <strong>4</strong>
+            CCAR documents:
+            <span class="year">2020</span>
+              2: Virtual Minyan in Time of COVID-19 Emergency · <span class="year">2020</span>
+              B’rit Milah During COVID-19 Pandemic · <span class="year">1999</span>
+              The Second Festival Day and Reform Judaism</li>
+        
+          <li><span class="key">Pirkei Avot 2:1</span> — used in <strong>4</strong>
+            CCAR documents:
+            <span class="year">2006</span>
+              SUPPORT FOR JEWISH MILITARY CHAPLAINS AND JEWISH MILITARY PERSONNEL AND THEIR FAMILIES · <span class="year">2003</span>
+              Sharing the Synagogue’s Membership List · <span class="year">1998</span>
+              BILINGUAL EDUCATION</li>
+        
+          <li><span class="key">Sanhedrin 74a:12</span> — used in <strong>13</strong>
+            CCAR documents:
+            <span class="year">2006</span>
+              Hunger Strike: On the Force Feeding of Prisoners · <span class="year">2003</span>
+              Live Liver Transplantation · <span class="year">2003</span>
+              Hastening the Death of a Potential Organ Donor</li>
+        
+          <li><span class="key">Yoma 85b:3</span> — used in <strong>22</strong>
+            CCAR documents:
+            <span class="year">2011</span>
+              Sterilization Mentally Challenged · <span class="year">2006</span>
+              Hunger Strike: On the Force Feeding of Prisoners · <span class="year">2002</span>
+              Preventive War</li>
+        
+      </ul>
+    
+    
+      <p class="meta alone"><strong>Walking alone</strong> — no CCAR document cites
+        12 of this responsum's sources:</p>
+      <p class="refs"><span class="key">Psalms 119:126</span> · <span class="key">Berakhot 63a:9</span> · <span class="key">Gittin 34b:3</span> · <span class="key">Leviticus 4:13</span> · <span class="key">Leviticus 4:14</span> · <span class="key">Shulchan Arukh, Choshen Mishpat 25:3</span> · <span class="key">Gittin 55a:12</span> · <span class="key">Chullin 15a:3</span> · <span class="key">Chullin 15a:4</span> · <span class="key">Chullin 15a:12</span> · <span class="key">Bava Batra 41a:2</span> · <span class="key">Bava Batra 47a:6</span></p>
+      <p class="caveat">
+        This is not a fault. It is the signature of extrapolation — Reform had never applied
+        these sources, and this responsum does. It is also exactly where your reading matters
+        most, because no Reform precedent backs the move.
+      </p>
+    
+  </div>
+  
+
+  <div class="doc"><h2 id="notes-and-sources">Notes and sources</h2>
+<p><strong>1. Sources relied on.</strong> <em>Reform:</em> CCAR 5782.2 (2022), <em>dina d'malchuta dina</em> binds where law is fair · CCAR 5780.2 (2020), virtual minyan, a <em>hora'at sha'ah</em> with its own end · RES the-use-of-torture-or-lesser-forms-of-coercion-to-obtain-information-from-prisoners (2005), emergency power abused · CCAR 5762.4 (2002), principle versus policy · CCAR 5759.7 (1999), a <em>takkanah</em> does not outlive its rationale · CCAR 5755.11 (1995), emergency trials: stop when failing, disclose · NRR 267-268 (1980) ⚠ pre-1990, the 613 diminished in practice. <em>Codes</em> ⚠ not Reform: Mishneh Torah, Rebels 2:2 and 2:4; Shulchan Arukh, Choshen Mishpat 2:1 and 25:3. <em>Classical:</em> Psalms 119:126; Berakhot 63a:9, 45a:2; Yoma 69a:14, 85b:3; Gittin 34b:3, 36a:11, 55a:4, 55a:12, 60a:6; Deuteronomy 15:9; Leviticus 4:13-14; Sanhedrin 56a:24, 74a:12; Pirkei Avot 2:1; Chullin 15a:3-4, 15a:12; Bava Batra 41a:2, 47a:2, 47a:6. <em>Contemporary:</em> Noema essay of 28 October 2026, as clipped.</p>
+<p><strong>2. Read vs. reported.</strong> Radbaz, Rabad and the Tosafists on lapsed enactments are known only through CCAR 5759.7. Why Rav silenced the student in the Chullin passage is itself disputed in the Talmud; only his public-lecture practice is used.</p>
+<p><strong>3. Not in the library.</strong> Yevamot 90b, the Talmudic root of the ruling for the hour (Elijah on Mount Carmel); the principle is carried instead by Maimonides and CCAR 5780.2. Mishnah Bava Batra chapter 3, the three-year rule for ownership by possession; no number is used. Whether the stolen-beam ordinance covers a robber who does not repent was not checked in the codes; that reading is mine. CCAR 5758.1, on community ordinances, is held but was not read.</p>
+<p><strong>4. What would change this answer.</strong>
+- A German experimental clause renewed past its end date without a published evaluation. The three limits would then be failing in practice, and the method argued for here would need guards the sources do not supply.
+- The sho'eil's own congregation still running an emergency practice after its stated end condition has passed. That is the quiet drift from temporary to permanent this answer warns of.
+- A CCAR ruling on standing emergency measures, or on governing AI by temporary rulings. It would outrank this answer.</p>
+<p><strong>5. Checker report.</strong> <code>verify_answer.py</code>, 2026-10-31: 107 checks (counting this note's own references), 0 failures, 0 unverifiable, 0 named but not checked. 37 quotes all score 1.00; the one departure is grounded in CCAR 5759.7. NRR 267-268 is flagged historical. The checker proves quotes exist, not that they are read rightly. The paraphrases (Gittin 55a:4, Bava Batra 47a:2, Shulchan Arukh, Choshen Mishpat 25:3, Yoma 69a:14) were checked by hand against the text.</p></div>
 </section>
 <section class="pane" id="pane-r-civil-disobedience">
   <p class="back"><a href="#responsa">← all responsa</a></p>
