@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+      initial-scale=1.0">
+    <title>MOCKUP v3 · Medical records</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="index_files/css2_Fk7X.css" rel="stylesheet">
+    <style>
+    :root {
+      --bg:        #f5f7f5;
+      --surface:   #ffffff;
+      --border:    #d8e0da;
+      --accent:    #2e7d52;
+      --accent-dim:#5aab7a;
+      --text:      #000000;      /* Pure black */
+      --text-dim:  #333333;      /* Dark gray */
+      --text-bright:#000000;     /* Pure black */
+      --mono: 'JetBrains Mono', monospace;
+      --serif: 'Libre Baskerville', Georgia, serif
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Subtle grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.25;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    /* ── HEADER ── */
+    header {
+      border-left: 2px solid var(--accent);
+      padding-left: 1.5rem;
+      margin-bottom: 3.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .name {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 700;
+      color: var(--text-bright);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .tagline {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--accent);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+    }
+
+    .location {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      margin-top: 0.3rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    section:nth-child(2) { animation-delay: 0.1s; }
+    section:nth-child(3) { animation-delay: 0.2s; }
+    section:nth-child(4) { animation-delay: 0.3s; }
+    section:nth-child(5) { animation-delay: 0.4s; }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--accent-dim);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── BIO ── */
+    .bio {
+      font-size: 0.97rem;
+      color: var(--text);
+      line-height: 1.85;
+    }
+
+    .bio em {
+      color: var(--text-bright);
+      font-style: italic;
+    }
+
+    /* ── CONTACT ── */
+    .contact-link {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent-dim);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .contact-link:hover {
+      color: var(--text-bright);
+      border-color: var(--text-bright);
+    }
+
+    /* ── INTEREST DOMAIN TAGS ── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: var(--text-dim);
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 0.3rem 0.65rem;
+      letter-spacing: 0.04em;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      cursor: default;
+    }
+
+    .tag:hover {
+      color: var(--accent);
+      border-color: var(--accent-dim);
+      background: rgba(76, 175, 120, 0.05);
+    }
+
+    /* ── STACK LIST ── */
+    .stack-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.35rem 1.5rem;
+    }
+
+    .stack-list li {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      padding: 0.2rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .stack-list li::before {
+      content: '›';
+      color: var(--accent-dim);
+      font-size: 0.9rem;
+    }
+
+    /* ── PROJECTS ── */
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .project {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.9rem 1.1rem;
+      background: var(--surface);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .project:hover {
+      border-color: var(--accent-dim);
+      background: rgba(76, 175, 120, 0.03);
+    }
+
+    .project-name {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.04em;
+    }
+
+    .project-desc {
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.5s forwards;
+    }
+
+    /* ── FIGURES / MEDIA ── */
+    figure { margin: 0; }
+    figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--surface);
+    }
+    figcaption {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      line-height: 1.6;
+      letter-spacing: 0.04em;
+      color: var(--text-dim);
+      margin-top: 0.6rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--accent-dim);
+    }
+
+    /* photo floated to the right of a card's text */
+    .card-shot {
+      float: right;
+      width: 30%;
+      max-width: 170px;
+      margin: 0.2rem 0 0.5rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    a.project { display: flow-root; }
+    .go {
+      margin-top: 0.8rem;
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-top: 1px solid var(--border);
+      padding-top: 0.7rem;
+    }
+    .go span { display: inline-block; transition: transform 0.18s ease; }
+    a.project:hover .go { text-decoration: underline; }
+    a.project:hover .go span { transform: translateX(4px); }
+    a.go { display: block; text-decoration: none; }
+    a.go:hover { text-decoration: underline; }
+    a.go:hover span { transform: translateX(4px); }
+
+    /* ── ORG-CHART BRANCHES under a parent card ── */
+    .branch {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-left: 1.5rem;
+      padding-left: 1.5rem;
+    }
+    .branch > .project { position: relative; }
+    .branch > .project::before {
+      content: '';
+      position: absolute;
+      left: calc(-1.5rem - 1px);
+      top: -1rem;
+      width: 1.5rem;
+      height: 2.3rem;
+      border-left: 2px solid var(--accent-dim);
+      border-bottom: 2px solid var(--accent-dim);
+      border-bottom-left-radius: 6px;
+    }
+    .branch > .project:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: calc(-1.5rem - 1px);
+      top: 1.3rem;
+      bottom: -0.75rem;
+      border-left: 2px solid var(--accent-dim);
+    }
+
+    .trio {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1rem 0 0;
+    }
+    .trio figure { margin: 0; }
+    .trio img {
+      width: 100%;
+      height: 280px;
+      object-fit: contain;          /* portrait screenshot gets whitespace either side */
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      display: block;
+    }
+    .trio figcaption {
+      margin-top: 0.4rem;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      line-height: 1.45;
+    }
+    @media (max-width: 620px) {
+      .trio { grid-template-columns: 1fr; }
+      .trio img { height: auto; max-height: 340px; }
+    }
+    .pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0 0;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 480px) {
+      .container { padding: 2.5rem 1.25rem 4rem; }
+      .stack-list { grid-template-columns: 1fr 1fr; }
+      .pair { grid-template-columns: 1fr; }
+      .branch { margin-left: 0.75rem; padding-left: 1rem; }
+      .branch > .project::before,
+      .branch > .project:not(:last-child)::after { left: calc(-1rem - 1px); }
+      .branch > .project::before { width: 1rem; }
+    }
+  </style>
+  <style>
+    .back { font-family:var(--mono); font-size:0.72rem; color:var(--accent); text-decoration:none; letter-spacing:0.08em; }
+    h1.pt { font-family:var(--serif); font-size:clamp(1.8rem,5vw,2.4rem); margin:1.2rem 0 1rem; color:var(--text-bright); }
+    .bio p { margin:0.7rem 0; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:0.9rem; }
+    .grid .project-desc { font-size:0.84rem; }
+    .ph { display:flex; align-items:center; justify-content:center; text-align:center; border:2px dashed var(--accent-dim); border-radius:4px;
+      background:rgba(46,125,82,0.05); font-family:var(--mono); font-size:0.64rem; color:var(--accent); padding:0.6rem; min-height:120px; margin-bottom:0.6rem; }
+    .callout { background:var(--surface); border:1px solid var(--border); border-left:3px solid var(--accent); border-radius:4px; padding:0.8rem 1rem; font-size:0.9rem; }
+    .container { max-width:900px; }
+    .shotrow { margin:0 0 2.2rem; }
+    .how h3 { font-family:var(--mono); font-size:0.78rem; font-weight:500; color:var(--accent);
+      letter-spacing:0.08em; text-transform:uppercase; margin:1.4rem 0 0.3rem; }
+    .how p, section.bio p { font-size:0.95rem; line-height:1.7; margin:0.4rem 0; }
+    section.how { margin-bottom:2.5rem; }
+    .shotrow img { width:100%; border:1px solid var(--border); border-radius:6px; display:block; margin:0.4rem 0 0.5rem;
+      box-shadow:0 4px 14px rgba(0,0,0,0.08); }
+    .shotrow p, .phoneshot p { font-size:0.9rem; color:var(--text-dim); margin:0; }
+    .phoneshot { max-width:320px; }
+    .phoneshot img { width:100%; border:10px solid #1d1f22; border-radius:26px; display:block; margin-bottom:0.5rem; }
+    .lede { font-size:0.92rem; color:var(--text-dim); margin:0 0 1rem; }
+
+    /* ── LINKS: prominent red (Bobby 11-24) ── */
+    :root { --link:#c62828; }
+    a.go, .go, a.back, a.tlink, button.tlink, a.contact-link, .tile .more, a.svc {
+      color:var(--link) !important; border-color:var(--link) !important; font-weight:600; }
+    a.go { font-size:0.86rem; }
+    a.go:hover, a.tlink:hover, a.back:hover, a.svc:hover { text-decoration:underline; }
+  </style>
+  <body>
+    <div class="container">
+      <a class="back" href="ai-buddy.html">&larr; inside AI Buddy</a>
+      <h1 class="pt">My own medical records</h1>
+
+      <section class="bio">
+        <p>Several providers, several MyCharts, none of them talking to each other.&nbsp; I wanted one copy of my records, on my own computer, that I could chart, search and question &mdash; and that would still be there when I change primary providers again.</p>
+      </section>
+
+      <section class="how">
+        <div class="section-label">How it was done</div>
+
+        <h3>1. Getting the records out</h3>
+        <p>There are two doors.&nbsp; You can request a download of your records from MyChart, and that mostly works but is high friction to add new visits or information.&nbsp; Turns out that Epic, the company behind MyChart, offers direct connections to health apps.&nbsp; I registered a free Epic developer account, built a small private app, and now three provider organizations feed one record &mdash; downloads and the live connection both.</p>
+
+        <h3>2. Numbers and words go to different places</h3>
+        <p>Lab values go in a database where numbers can be charted; doctor's opinions are kept word for word.&nbsp; The two are linked by date.</p>
+
+        <h3>3. Getting the numbers right &mdash; the hard part</h3>
+        <p>Mistakes are costly.&nbsp; Turns out that some readings arrive many times &mdash; overlapping downloads plus the live connection. Worked on it, and the fix was to treat a reading as <em>the test, the day, the value and the unit</em>, whoever reported it.</p>
+
+        <h3>4. Making it readable</h3>
+        <p>Every test and drug gets a plain-English &ldquo;What is this?&rdquo; from
+          the National Library of Medicine's public dictionaries (MedlinePlus, MeSH,
+          RxNorm), kept on the tower.&nbsp; My home blood-pressure cuff readings sit
+          next to the clinic's, and my own notes &mdash; started a medicine, changed
+          a habit &mdash; are drawn on the charts as dates, so cause and effect are
+          easy to see.</p>
+
+        <h3>5. A local AI, tested before trusted</h3>
+        <p>A model running on the tower (Qwen3, 14 billion parameters) summarises doctors' notes and answers questions about them.&nbsp; Before trusting it, I tested candidates on invented notes with planted traps.&nbsp; The one that stayed has a strict rule &mdash; date every fact &mdash; and a second pass that checks each sentence against the note.</p>
+
+        <h3>6. Supplement deep dives</h3>
+        <p>For each supplement I take or am considering: what it is used for, how
+          to take it, the evidence, and the safety (interactions included).&nbsp; The
+          evidence is weighed by my own rubric &mdash; randomised trials with at
+          least 25 people count, maker-funded studies count half, specific and
+          independent user reports count.&nbsp; This is the one place a frontier AI
+          helps: Claude does the research from the supplement's <em>name only</em>
+          &mdash; never my records &mdash; and I review every deep dive before it
+          goes in the library.</p>
+
+      </section>
+
+      <section>
+        <div class="section-label">What it looks like</div>
+        <p class="lede">Mostly used on a tablet, held sideways &mdash; these are the screens as they look there.</p>
+        <div class="shotrow">
+          <div class="project-name">Summary</div>
+          <img src="media/med-summary.jpg" alt="Summary screen of my medical records app, tablet, made-up values">
+          <p>Before a visit: what changed since the last one, my blood pressure, new results and medicine changes, sorted by the reason I'm going.</p>
+        </div>
+        <div class="shotrow">
+          <div class="project-name">Results, charted</div>
+          <img src="media/med-ldl.jpg" alt="Results, charted screen of my medical records app, tablet, made-up values">
+          <p>Every lab result from every provider on one chart over the years, with the normal range and my own notes (a medicine started, a habit changed) drawn in.</p>
+        </div>
+        <div class="shotrow">
+          <div class="project-name">Blood pressure</div>
+          <img src="media/med-bp.jpg" alt="Blood pressure screen of my medical records app, tablet, made-up values">
+          <p>My home readings next to the clinic's, against the 130/80 line.</p>
+        </div>
+        <div class="shotrow">
+          <div class="project-name">Doctors' notes</div>
+          <img src="media/med-visits.jpg" alt="Doctors' notes screen of my medical records app, tablet, made-up values">
+          <p>Every visit note and report, word for word, searchable.</p>
+        </div>
+        <div class="shotrow">
+          <div class="project-name">Meds & supplements</div>
+          <img src="media/med-mine.jpg" alt="Meds & supplements screen of my medical records app, tablet, made-up values">
+          <p>Current, stopped and considered. Each supplement links to a deep dive on the evidence; one tap prints the list for the doctor.</p>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-label">And on the phone</div>
+        <div class="phoneshot"><img src="media/med-phone.jpg" alt="Medical summary on my phone, made-up values">
+          <p>The same records on the phone, anywhere, through my private network.</p></div>
+      </section>
+
+      <section>
+        <div class="section-label">Where it lives</div>
+        <div class="callout"><strong>Nothing medical leaves the tower.</strong>
+          <span>The data lives on my own server, the answers come
+          from a local model, and none of it is sent to a frontier AI.&nbsp;
+          Every screenshot on this page uses made-up values.</span></div>
+      </section>
+
+      <footer> bob miksch &nbsp;·&nbsp; seattle, wa &nbsp;·&nbsp; personal infrastructure </footer>
+    </div>
+  </body>
+</html>

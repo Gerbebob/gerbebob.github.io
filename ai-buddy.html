@@ -5,16 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,
       initial-scale=1.0">
-    <title>MOCKUP · About AI Buddy — Bob Miksch</title>
-    <meta name="description" content="A voice AI companion whose brain
-      runs entirely on my own tower — how it started, and what it took
-      to move the brain home.">
+    <title>MOCKUP v2 · Inside AI Buddy</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;family=JetBrains+Mono:wght@300;400;500&amp;display=swap"
-      rel="stylesheet">
+    <link href="index_files/css2_Fk7X.css" rel="stylesheet">
     <style>
-
     :root {
       --bg:        #f5f7f5;
       --surface:   #ffffff;
@@ -259,56 +253,9 @@ href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400
       animation: fadeUp 0.6s ease 0.5s forwards;
     }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── MOBILE ── */
-    @media (max-width: 480px) {
-      .container { padding: 2.5rem 1.25rem 4rem; }
-      .stack-list { grid-template-columns: 1fr 1fr; }
-    }
-  
-
-    /* --- article page, built on the site's own tokens --- */
-    .back { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em;
-            text-transform: uppercase; color: var(--accent-dim); text-decoration: none; }
-    .back:hover { color: var(--accent); }
-    article h1 { font-family: var(--serif); font-size: 1.9rem; line-height: 1.25;
-                 margin: 1.6rem 0 0.5rem; font-weight: 700; }
-    .standfirst { font-size: 1.05rem; color: var(--text-dim); margin-bottom: 2.4rem;
-                  padding-bottom: 1.6rem; border-bottom: 1px solid var(--border); }
-    article h2 { font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
-                 letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-dim);
-                 margin: 3rem 0 1rem; }
-    article h3 { font-size: 1.12rem; margin: 2rem 0 0.6rem; font-weight: 700; }
-    article p { margin-bottom: 1.1rem; }
-    article ul { margin: 0 0 1.2rem 1.1rem; }
-    article li { margin-bottom: 0.45rem; }
-    article strong { font-weight: 700; }
-    blockquote { border-left: 2px solid var(--accent-dim); padding: 0.2rem 0 0.2rem 1.1rem;
-                 margin: 1.4rem 0; color: var(--text-dim); font-style: italic; }
-    .callout { background: var(--surface); border: 1px solid var(--border);
-               border-radius: 4px; padding: 1rem 1.2rem; margin: 1.6rem 0;
-               font-size: 0.95rem; }
-    .callout.warn { border-left: 3px solid #b3541e; }
-    .callout.star { border-left: 3px solid var(--accent); }
-    table { width: 100%; border-collapse: collapse; margin: 1.4rem 0; font-size: 0.9rem; }
-    th, td { text-align: left; padding: 0.55rem 0.7rem; border-bottom: 1px solid var(--border); }
-    th { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em;
-         text-transform: uppercase; color: var(--accent-dim); font-weight: 500; }
-    code { font-family: var(--mono); font-size: 0.85em; background: rgba(0,0,0,0.04);
-           padding: 0.1rem 0.35rem; border-radius: 3px; }
-    .kicker { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.2em;
-              text-transform: uppercase; color: var(--accent-dim); }
-    .table-wrap { overflow-x: auto; }
-
-    /* --- media --- */
-    figure { margin: 2.2rem 0; }
-    figure img,
-    figure video {
+    /* ── FIGURES / MEDIA ── */
+    figure { margin: 0; }
+    figure img {
       display: block;
       width: 100%;
       height: auto;
@@ -326,438 +273,439 @@ href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400
       padding-left: 0.75rem;
       border-left: 2px solid var(--accent-dim);
     }
-    .clip-note {
-      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.06em;
-      color: var(--accent-dim); text-transform: uppercase; margin-bottom: 0.5rem;
+
+    /* photo floated to the right of a card's text */
+    .card-shot {
+      float: right;
+      width: 30%;
+      max-width: 170px;
+      margin: 0.2rem 0 0.5rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    a.project { display: flow-root; }
+    .go {
+      margin-top: 0.8rem;
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-top: 1px solid var(--border);
+      padding-top: 0.7rem;
+    }
+    .go span { display: inline-block; transition: transform 0.18s ease; }
+    a.project:hover .go { text-decoration: underline; }
+    a.project:hover .go span { transform: translateX(4px); }
+    a.go { display: block; text-decoration: none; }
+    a.go:hover { text-decoration: underline; }
+    a.go:hover span { transform: translateX(4px); }
+
+    /* ── ORG-CHART BRANCHES under a parent card ── */
+    .branch {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-left: 1.5rem;
+      padding-left: 1.5rem;
+    }
+    .branch > .project { position: relative; }
+    .branch > .project::before {
+      content: '';
+      position: absolute;
+      left: calc(-1.5rem - 1px);
+      top: -1rem;
+      width: 1.5rem;
+      height: 2.3rem;
+      border-left: 2px solid var(--accent-dim);
+      border-bottom: 2px solid var(--accent-dim);
+      border-bottom-left-radius: 6px;
+    }
+    .branch > .project:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: calc(-1.5rem - 1px);
+      top: 1.3rem;
+      bottom: -0.75rem;
+      border-left: 2px solid var(--accent-dim);
     }
 
-
-    /* --- mockup-only additions --- */
-    .phone-row { display: grid; grid-template-columns: 200px 1fr; gap: 1.5rem;
-      align-items: start; margin: 1.6rem 0; }
-    .phone-row figure { margin: 0; }
-    .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
-      margin: 1.6rem 0 1.2rem; }
+    .trio {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1rem 0 0;
+    }
     .trio figure { margin: 0; }
-    .trio img { width: 100%; height: 280px; object-fit: contain;
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 4px; display: block; }
-    .trio figcaption { margin-top: .4rem; font-size: .78rem; color: var(--text-dim); }
-    details.origin { border: 1px solid var(--border); border-radius: 4px;
-      background: var(--surface); padding: 0.9rem 1.2rem; margin: 3rem 0 1rem; }
-    details.origin summary { font-family: var(--mono); font-size: 0.78rem; font-weight: 500;
-      letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); cursor: pointer;
-      list-style: none; display: flex; align-items: baseline; gap: .55rem; }
-    details.origin summary::-webkit-details-marker { display: none; }
-    details.origin summary::before { content: "\25B8"; display: inline-block;
-      transition: transform .15s ease; font-size: .9em; }
-    details.origin[open] summary::before { transform: rotate(90deg); }
-    details.origin summary::after { content: "click to open"; margin-left: auto;
-      font-size: 0.68rem; letter-spacing: .04em; text-transform: none;
-      color: var(--text-dim); border-bottom: 1px dotted currentColor; }
-    details.origin[open] summary::after { content: "click to close"; }
-    details.origin summary:hover { text-decoration: underline; }
-    details.origin:hover { border-color: var(--accent); }
-    details.origin summary span { color: var(--text-dim); text-transform: none; font-weight: 400; }
-    details.origin[open] summary { margin-bottom: 1rem; }
-    .pair-mock { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
-    .pair-mock img { width: 100%; border: 1px solid var(--border); border-radius: 4px; }
+    .trio img {
+      width: 100%;
+      height: 280px;
+      object-fit: contain;          /* portrait screenshot gets whitespace either side */
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      display: block;
+    }
+    .trio figcaption {
+      margin-top: 0.4rem;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      line-height: 1.45;
+    }
     @media (max-width: 620px) {
       .trio { grid-template-columns: 1fr; }
       .trio img { height: auto; max-height: 340px; }
     }
-    @media (max-width: 480px) {
-      .phone-row { grid-template-columns: 1fr; }
-      .phone-row figure { max-width: 220px; }
-      .trio { grid-template-columns: 1fr; }
-      .trio img { height: auto; max-height: 340px; }
+    .pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0 0;
     }
-    </style>
-  </head>
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 480px) {
+      .container { padding: 2.5rem 1.25rem 4rem; }
+      .stack-list { grid-template-columns: 1fr 1fr; }
+      .pair { grid-template-columns: 1fr; }
+      .branch { margin-left: 0.75rem; padding-left: 1rem; }
+      .branch > .project::before,
+      .branch > .project:not(:last-child)::after { left: calc(-1rem - 1px); }
+      .branch > .project::before { width: 1rem; }
+    }
+  </style>
+  <style>
+    /* ── MOCKUP v2 (page 2) ── */
+    .back { font-family:var(--mono); font-size:0.72rem; color:var(--accent); text-decoration:none; letter-spacing:0.08em; }
+    h1.pt { font-family:var(--serif); font-size:clamp(1.8rem,5vw,2.4rem); margin:1.2rem 0 0.4rem; color:var(--text-bright); }
+    .lede { font-size:0.95rem; color:var(--text-dim); margin-bottom:2rem; }
+    .layout { display:grid; grid-template-columns:260px 1fr; gap:1.6rem; align-items:start; }
+    @media (max-width:700px) { .layout { grid-template-columns:1fr; } .phone { margin:0 auto; } }
+    /* phone stand-in */
+    .phone { width:250px; border:10px solid #1d1f22; border-radius:28px; background:#f4f5f7; padding:0.6rem 0.5rem 1rem;
+      position:sticky; top:1rem; box-shadow:0 6px 20px rgba(0,0,0,0.15); }
+    .phone { padding:0; background:#14141a; overflow:hidden; }
+    .screen { position:relative; line-height:0; }
+    .screen img { width:100%; display:block; }
+    .hit { position:absolute; left:0; right:0; cursor:pointer; border-radius:6px; }
+    .hit:hover, .hit.hl { background:rgba(90,171,122,0.22); outline:2px solid var(--accent-dim); }
+    .hit .num { position:absolute; left:2px; top:50%; transform:translateY(-50%); margin:0; box-shadow:0 0 0 2px #14141a; }
+    #soonrows { width:250px; margin:0 auto; }
+    .phone .bar { font-family:var(--mono); font-size:0.6rem; color:#555; text-align:center; margin-bottom:0.5rem; }
+    .phone .standin { font-family:var(--mono); font-size:0.55rem; color:#b3541e; text-align:center; margin-bottom:0.4rem; }
+    .lane { display:flex; align-items:center; gap:0.5rem; background:#fff; border-radius:8px; padding:0.4rem 0.45rem;
+      margin-bottom:0.35rem; cursor:pointer; border:1px solid #e3e6ea; position:relative; }
+    .lane:hover, .lane.hl { outline:2px solid var(--accent); }
+    .lane .ic { width:22px; height:22px; border-radius:6px; flex:none; }
+    .lane .nm { font-family:system-ui,sans-serif; font-size:0.74rem; font-weight:600; color:#222; }
+    .lane.soon { background:transparent; border-style:dashed; cursor:pointer; }
+    .lane.soon .nm { color:#888; font-weight:500; }
+    .num { font-family:var(--mono); font-size:0.62rem; font-weight:600; color:#fff; background:var(--accent);
+      border-radius:50%; width:18px; height:18px; display:inline-flex; align-items:center; justify-content:center; flex:none; margin-left:auto; }
+    .soon .num, .tile.soon .num { background:#999; }
+    /* tiles */
+    .tiles { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:0.8rem; }
+    .tile { border:1px solid var(--border); border-radius:4px; background:var(--surface); padding:0.75rem 0.85rem;
+      cursor:pointer; display:flex; flex-direction:column; gap:0.35rem; transition:border-color .2s; }
+    .tile:hover, .tile.hl { border-color:var(--accent); }
+    .tile .top { display:flex; align-items:center; gap:0.5rem; }
+    .tile .top .num { margin-left:0; }
+    .tile .project-desc { font-size:0.82rem; }
+    .tile .more { font-family:var(--mono); font-size:0.66rem; color:var(--accent); letter-spacing:0.08em; text-transform:uppercase; margin-top:auto; }
+    .tile.soon { border-style:dashed; background:transparent; }
+    .group-label { font-family:var(--mono); font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent-dim); margin:1.2rem 0 0.6rem; }
+    /* modal */
+    dialog { margin:auto; border:1px solid var(--border); border-radius:6px; padding:0; max-width:640px; width:calc(100% - 32px); }
+    dialog::backdrop { background:rgba(0,0,0,0.45); }
+    .mhead { display:flex; align-items:center; gap:0.6rem; padding:0.8rem 1rem; border-bottom:1px solid var(--border); position:sticky; top:0; background:#fff; }
+    .mhead .project-name { margin:0; font-size:0.85rem; }
+    .mhead button { margin-left:auto; font:inherit; font-family:var(--mono); background:none; border:1px solid var(--border); border-radius:3px; cursor:pointer; padding:0.1rem 0.5rem; }
+    .mbody { padding:0.9rem 1.1rem 1.2rem; }
+    .mbody p { font-size:0.92rem; color:var(--text-dim); line-height:1.6; margin:0.6rem 0; }
+    .mbody img.shot { display:block; max-height:340px; max-width:100%; margin:0.4rem auto 0.8rem; border:1px solid var(--border); border-radius:4px; }
+    .ph { display:flex; align-items:center; justify-content:center; text-align:center; border:2px dashed var(--accent-dim); border-radius:4px;
+      background:rgba(46,125,82,0.05); font-family:var(--mono); font-size:0.68rem; color:var(--accent); padding:0.6rem; min-height:160px; margin:0.4rem 0 0.8rem; }
+    .callout { background:var(--bg); border:1px solid var(--border); border-left:3px solid var(--accent); border-radius:4px; padding:0.7rem 0.9rem; font-size:0.88rem; margin:0.8rem 0; }
+    table { width:100%; border-collapse:collapse; font-size:0.84rem; margin:0.6rem 0; }
+    th, td { text-align:left; padding:0.4rem 0.5rem; border-bottom:1px solid var(--border); }
+    th { font-family:var(--mono); font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); }
+    a.tlink, button.tlink { font-family:var(--mono); font-size:0.72rem; color:var(--accent); text-decoration:none; letter-spacing:0.06em;
+      text-transform:uppercase; background:none; border:1px solid var(--accent-dim); border-radius:3px; padding:0.3rem 0.6rem; cursor:pointer; display:inline-block; margin-top:0.4rem; }
+    .soon-badge { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase;
+      color:var(--text-dim); border:1px solid var(--border); border-radius:3px; padding:0.05rem 0.4rem; margin-left:0.4rem; }
+    .container { max-width:900px; }
+    .phonecol { max-width:420px; margin:0 auto; }
+    .phonecol .phone { width:100%; position:static; border-width:12px; border-radius:34px; }
+    .phonecol .tiles { grid-template-columns:1fr; }
+    .mhead .dtag { font-size:0.86rem; color:var(--text-dim); margin-top:0.2rem; font-family:var(--serif); }
+    .mhead { align-items:flex-start; }
+    .mhead > div { flex:1; text-align:left; }
+    .mhead button { white-space:nowrap; }
+    h4.sub { font-family:var(--mono); font-size:0.74rem; letter-spacing:0.1em; text-transform:uppercase;
+      color:var(--accent); margin:1.6rem 0 0.4rem; padding-top:1rem; border-top:1px solid var(--border); }
+    p.cap { font-size:0.78rem !important; text-align:center; margin-top:-0.4rem !important; }
+    .mbody .project { margin-top:0.6rem; }
+    .mbody img.shot.wide { max-height:none; width:100%; }
+    .mbody .pair { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin:0.4rem 0 0.8rem; align-items:start; }
+    .mbody .pair img { width:100%; border:1px solid var(--border); border-radius:4px; display:block; }
+    .mbody .pair figcaption { font-size:0.7rem; margin-top:0.4rem; }
+
+    /* ── LINKS: prominent red (Bobby 11-24) ── */
+    :root { --link:#c62828; }
+    a.go, .go, a.back, a.tlink, button.tlink, a.contact-link, .tile .more, a.svc {
+      color:var(--link) !important; border-color:var(--link) !important; font-weight:600; }
+    a.go { font-size:0.86rem; }
+    a.go:hover, a.tlink:hover, a.back:hover, a.svc:hover { text-decoration:underline; }
+  </style>
   <body>
-    <div class="container"> <a class="back" href="./">← bob miksch</a>
-      <article>
-        <p class="kicker">Personal infrastructure &nbsp;·&nbsp;
-          September 2026</p>
-        <h1>About AI Buddy</h1>
-        <p class="standfirst">A bit of philosophy.&nbsp; A new force has
-          entered the world, AI.&nbsp; In order for me to exert my will
-          to shape the world as I wish, and maximize my quality of life,
-          I must adapt.<br>
-        </p>
-        <ul>
-          <li>I can't do it by myself. AI assisted entities will have
-            more capabilities than a 'bare' human and will out-compete
-            me.</li>
-          <li>I don't see myself aligning exclusively with an external
-            frontier AI.&nbsp; While that may amplify my capabilities,
-            it makes me dependent on a resource over which I have no
-            control and which may be impermanent.&nbsp; And there is a
-            cost, the literal dollars and cents, and the scraping of my
-            identity and loss of digital sovereignty.</li>
-          <li>So, I see my path as building local, persistent, AI
-            capabilities; and having those capabilities both stand alone
-            to serve me, and broker my interactions with external AI
-            agents.</li>
-        </ul>
-        <p class="standfirst">My local AI capabilities are not separate
-          from me, they are personal augmentation.&nbsp; So I want them
-          to be available everywhere, all the time.&nbsp; But bolting
-          silicon onto flesh is a work in progress.&nbsp; AR glasses,
-          Neuralink, Bee wristband, Omi pendant, these all fall short in
-          one way or another.<br>
-        </p>
+    <div class="container">
+      <a class="back" href="index.html">&larr; bob miksch</a>
+      <h1 class="pt">Inside AI Buddy</h1>
+      <p class="lede">This is AI Buddy as I see it on my phone.&nbsp; Each lane on the home screen opens a service running on my tower.&nbsp; Tap a lane to see more about each service.</p>
 
-        <h2>AI Buddy is now a phone app</h2>
-        <p>AI Buddy started life as a plastic gadget on my desk (the story
-          is further down).&nbsp; It taught me what I actually wanted, and
-          the answer turned out to be already in my pocket.&nbsp; <strong>AI
-          Buddy is now an app on a phone.</strong>&nbsp; Same brain, same
-          home server, same rules — a better body.</p>
-        <p><strong>Here is the concept:</strong></p>
-        <figure>
-          <img src="media/buddy-phone-diagram.jpg" loading="lazy"
-            alt="Diagram: the AI Buddy app talks over my own network to a
-            small server in my house, which holds my clips, numbers,
-            Jewish KB and lab results; the outside world is reached only
-            through one door I hold the key to">
-          <figcaption>The phone is just the door.&nbsp; Everything that
-            matters lives on the tower, and only goes outside when I ask,
-            one question at a time.</figcaption>
-        </figure>
-        <div class="trio">
-          <figure>
-            <img src="media/buddy-left.jpg" loading="lazy"
-              alt="The original AI Buddy gadget, eyes lit">
-            <figcaption>The gadget</figcaption>
-          </figure>
-          <figure>
-            <img src="media/buddy-right.jpg" loading="lazy"
-              alt="The original AI Buddy opened up">
-            <figcaption>&hellip; opened up</figcaption>
-          </figure>
-          <figure>
-            <img src="media/buddy-phone-chat.jpg" loading="lazy"
-              alt="AI Buddy phone app: asking what I have saved about
-              Japan and South Korea, answered from my own clips">
-            <figcaption>What it is now</figcaption>
-          </figure>
-        </div>
-        <div>
-            <p>You hold the button and talk; it answers out loud, and the
-              conversation shows on screen as text.&nbsp; Or tap the
-              handset and just talk, like a phone call — no button per
-              sentence.</p>
-            <p>In the screenshot I'm asking <em>"What have I saved about
-              Japan and South Korea?"</em>&nbsp; It isn't answering from
-              the internet.&nbsp; It is answering from <strong>my own
-              library of clipped articles</strong>, on my own server, and
-              it knows when my clips don't cover a question.</p>
-        </div>
-        <p>AI Buddy will not stop with my clips.&nbsp; The plan is for it
-          to act as a surface for all of my AI services.&nbsp; Different
-          knowledgebases will require different delivery of query results
-          (e.g. a graph of medical test results vs. a structured essay for
-          an AI Rabbi response) but that will all be handled.</p>
-        <figure>
-          <img src="media/buddy-phone-lanes.jpg" loading="lazy"
-            alt="Design sketch of the app: a landing grid of lanes (Talk,
-            IID clips, Numbers, Jewish KB, Medical), and inside the Medical
-            lane an Ask tab with the answer drawn as a chart">
-          <figcaption>Where it's heading (design sketch, not built yet).&nbsp;
-            The home screen is a grid of "lanes", one per corner of my
-            tower, and the tower decides what's on it, so a new lane needs
-            no app update.&nbsp; Every lane works the same way — ask by
-            voice, get an answer drawn in whatever form suits it (a chart
-            for lab results, a passage for the Jewish KB).&nbsp; Medical
-            values shown are invented.</figcaption>
-        </figure>
-
-        <h2>Why a phone beat the gadget</h2>
-        <ul>
-          <li><strong>It travels for real.</strong>&nbsp; The gadget
-            couldn't fit Tailscale in its memory, so it needed a travel
-            router.&nbsp; A phone runs Tailscale natively — hotel, café,
-            cell signal, it just connects home.</li>
-          <li><strong>Private audio.</strong>&nbsp; Earbuds solve the
-            "speaking private matters out loud in public" problem the
-            gadget never could.</li>
-          <li><strong>Better ears.</strong>&nbsp; A modern phone has
-            several microphones and good noise handling, so it hears me
-            across a room without any extra hardware.</li>
-          <li><strong>A real screen.</strong>&nbsp; Answers come back as
-            readable text as well as speech, so I can scroll back
-            through what it said.</li>
-          <li><strong>It's a portal, not a toy.</strong>&nbsp; The same
-            door now opens onto everything else on the tower — my
-            clipped articles today, AI Rabbi and my own medical records
-            soon, and other services and agents as I wire them in.</li>
-        </ul>
-
-        <h2>What carried over — everything that mattered</h2>
-        <p>The phone didn't need a new brain.&nbsp; Everything I built
-          for the gadget moved across untouched: the speech recognition,
-          the local model, the voice, the router script that decides
-          where each question goes.&nbsp; <strong>A body swap, not a
-          rebuild.</strong></p>
-        <div class="callout star"><strong>My voice never leaves the
-            house.</strong> Speech becomes text on my own tower, so only
-          text could ever travel further — and only if I deliberately
-          ask for it.</div>
-        <div class="table-wrap">
-          <table>
-            <tbody>
-              <tr><th>You say</th><th>Where it goes</th></tr>
-              <tr><td>anything ordinary</td><td>the local model, free, ~1 second</td></tr>
-              <tr><td><em>"what have I saved about…"</em></td><td><strong>my own article library</strong></td></tr>
-              <tr><td><em>"what's the weather?"</em></td><td><strong>my own search server</strong>, then out to the web</td></tr>
-              <tr><td><em>"how's my print doing?"</em></td><td><strong>my 3D printer</strong></td></tr>
-              <tr><td><em>"ask Claude…"</em></td><td>out to Claude, deliberately, one question at a time</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p>Nothing goes outside unless I say a word that sends it there.
-          And it <strong>steps aside</strong> — if my overnight jobs are
-          using the graphics card, the buddy says so and waits rather than
-          fighting them for it.</p>
-
-        <h2>What the phone gave up</h2>
-        <p><strong>No wake word.</strong>&nbsp; The gadget woke up when
-          I said "Computer" across the room.&nbsp; On the phone I tap once
-          to start a conversation — then it's hands-free.&nbsp; A desk
-          problem, not a travel problem.&nbsp; The camera came along too — snap a photo in the app and ask about
-          it.</p>
-
-        <details class="origin">
-          <summary>Where it started — the original AI Buddy gadget
-            <span>(the K10 build, September 2026)</span></summary>
-          <p>The first AI Buddy was a plastic gadget about the size of a
-            fat deck of cards, with a color screen, a microphone, a
-            speaker, a camera and Wi-Fi.&nbsp; Most of what's above was
-            invented for it, and the lessons still apply to the phone.</p>
-          <figure class="clip">
-          <p class="clip-note">&#9656; Watch &nbsp;·&nbsp; 57 sec
-            &nbsp;·&nbsp; sound on</p>
-          <video controls preload="metadata" playsinline
-            poster="media/buddy-clip-poster.jpg">
-            <source src="media/buddy-clip.mp4" type="video/mp4">
-            Your browser cannot play this clip.
-          </video>
-          <figcaption>Asking Buddy a question, and the answer coming
-            back off the tower.</figcaption>
-        </figure>
-<h3>Why I moved its brain home</h3>
-        <p>I really just wanted to make a cute AI toy for my
-          granddaughters.&nbsp; I looked at a <a
-            href="https://www.youtube.com/watch?v=kH2ImnQFfLY">video</a>
-          and write-up from DFRobot — <em>"Build an Open-Source AI
-            Buddy: A DIY AI Companion for Kids"</em>. The brain is an
-          open-source project called <a
-            href="https://github.com/78/xiaozhi-esp32">Xiaozhi</a>,
-          running on a bare <strong>DB Robotics UNIHIKER K10</strong>
-          board with a custom BMS chip and battery.<br>
-        </p>
-        There was a problem.&nbsp; <strong>Everything you say goes to a
-          company in Shenzhen</strong> — and I read their terms
-        (translated from Chinese) rather than clicking through them:
-        <ul>
-          <li>After the wake word, the microphone keeps recording for <strong>a
-              full minute</strong></li>
-          <li>They take a <strong>perpetual, worldwide, transferable
-              licence</strong> over everything you say and everything it
-            says back — expressly including <em>"promotion, marketing,
-              user research"</em></li>
-          <li>Everything is stored <strong>inside China</strong>;
-            disputes go to Shenzhen arbitration</li>
-          <li>Deleting your data is <strong>email-only</strong>, up to
-            15 business days</li>
-        </ul>
-        <div class="callout warn"><strong>And the part that decided it.</strong>
-          Their console demands a <strong>Google account</strong> —
-          while the word "Google" appears <strong>nowhere</strong> in
-          their own policy documents. The paperwork and the product
-          don't match. That isn't a privacy trade-off you can even
-          evaluate.</div>
-        <p>So: <strong>Claude code helped me keep the toy, move the
-            brain.</strong></p>
-        <h3>What Claude code helped me change</h3>
-        <h3>1. The brain moved into my house</h3>
-        <p>The firmware on the board doesn't know where its brain is —
-          it just asks a web address on startup, and whatever answers,
-          it talks to. <strong>Claude code helped me change that one
-            address to my home AI server.<br>
-          </strong></p>
-        <p>Now everything runs on my tower, a desktop PC with a decent
-          graphics card: <strong>hearing</strong> (your speech becomes
-          text here), <strong>thinking</strong> (a local Qwen 3 model
-          answers), <strong>speaking</strong> (the reply becomes a
-          voice here too), and <strong>seeing</strong> (a second model
-          looks at the photos).</p>
-        <div class="callout star"><strong>My voice never leaves the
-            house.</strong> The words are made here, so only text could
-          ever travel further — and only if I deliberately ask for it. A
-          normal answer comes back in about a second.</div>
-        <h3>2. It can read my own library</h3>
-        <p>I run a system that reads my news feeds every night, scores
-          the articles, and keeps the ones worth keeping — about a year
-          of my own reading, indexed and searchable. <strong>The buddy
-            can ask it questions.</strong> Not "what does the internet
-          say about batteries" — <em>"what have <strong>I</strong>
-            saved about batteries?"</em> And it answers from my own
-          articles.</p>
-        <p>The trick is a broker script sitting in the slot where the AI
-          is supposed to be. Everything goes through it first, and it
-          decides where the question should go:</p>
-        <div class="table-wrap">
-          <table>
-            <tbody>
-              <tr>
-                <th>You say</th>
-                <th>Where it goes</th>
-              </tr>
-              <tr>
-                <td>anything ordinary</td>
-                <td>the local model, free, ~1 second</td>
-              </tr>
-              <tr>
-                <td><em>"what have I saved about…"</em></td>
-                <td><strong>my own article library</strong></td>
-              </tr>
-              <tr>
-                <td><em>"what's the weather?"</em></td>
-                <td><strong>my own search server</strong>, then out to
-                  the web</td>
-              </tr>
-              <tr>
-                <td><em>"how's my print doing?"</em></td>
-                <td><strong>my 3D printer</strong></td>
-              </tr>
-              <tr>
-                <td><em>"ask Claude…"</em></td>
-                <td>out to Claude, deliberately, one question at a time</td>
-              </tr>
-              <tr>
-                <td><em>"ask Gemini…"</em></td>
-                <td>out to Gemini, same</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p>Nothing goes outside unless I say a word that sends it there.
-          And it <strong>steps aside</strong> — if my overnight jobs
-          are using the graphics card, the buddy says so and waits
-          rather than fighting them for it.</p>
-        <h3>3. It travels</h3>
-        <p>The buddy talks to my tower through a Tailscale pipeline.
-          Right now I have to use a <strong>travel router</strong> that
-          joins my private network wherever it finds internet — a hotel,
-          my phone's hotspot, a friend's Wi-Fi — and carries the buddy
-          along with it.&nbsp; AI Buddy <i>almost</i> carried Tailscale
-          along with it (MicroLink) but I just couldn't squeeze out
-          another 50Kb of memory to make room for it.<br>
-        </p>
-        <div class="callout star"><strong>One address, everywhere,
-            nothing to reconfigure.</strong> Put both in a bag, plug the
-          router in at the other end, and it works.</div>
-        <h3>4. It can look things up</h3>
-        <p>The one thing a local model genuinely can't do is know what
-          happened this morning. So it searches the web — through <strong>my
-            own search server</strong> (SearXNG which can also escalate
-          as needed to use Crawl4AI) not Google's.</p>
-        <div class="callout star"><strong>What leaves the house is the
-            search terms, and nothing else.</strong> My voice never
-          moves; the words are made here. And the search server strips
-          my identity before passing the query on, which is the entire
-          reason it exists.</div>
-        <blockquote>"What's the weather?" — <strong>"Rain likely today,
-            with a high near 69°F. Chance of rain 90%."</strong></blockquote>
-        <p>Most questions are answered straight from the search results,
-          in about a second. When the snippets aren't enough it fetches
-          the actual page and strips out the navigation and ads before
-          reading it — that takes longer, so it only happens when it has
-          to.</p>
-        <h3>5. It has visual recognition<br>
-        </h3>
-        It has a camera and is capable of recognizing things, and even
-        acting on what it sees (e.g. solve an equation).&nbsp; But more
-        importantly, I think it removes a major glasshole objection, the
-        fear of being photographed without consent.&nbsp; It has that
-        old-fashioned camera feel of having to raise it and point it at
-        the subject matter, which gives enough clues to allow people to
-        accept or reject the action. <br>
-        <h3>6. Its body was designed by Claude Code</h3>
-        The original build publishes its enclosure as <strong>meshes</strong>
-        — the 3D equivalent of a photograph of a shape. I have a Voron
-        2.4 3D printer, gathering dust as many of my projects do, but I
-        wired Claude Code to FreeCAD directly.&nbsp; FreeCAD&nbsp; runs
-        on my Windows PC, Claude runs on my Linux tower, and they talk
-        over the network. <br>
-        <br>
-        Claude Code converted the meshes to geometric shapes.&nbsp; I
-        described changes I wanted in plain numbers and Claude Code
-        built real, editable geometry rather than a picture of geometry.
-        Front shell, rear cover, button, camera cone — all modified
-        according to my instructions.&nbsp; <br>
-        <br>
-        Just another new capability in our maker-changing world.<br>
-        <h3>7. It got a new face</h3>
-        <p>It shipped with cartoon emoji faces. It now has hand-built
-          robot eyes in the style of Anki's Cozmo — cyan on black,
-          blinking, one eye narrowing when it's thinking.</p>
-        <p>The neat part: they aren't pictures. They're <strong>drawn
-            from a handful of numbers</strong> — how tall each eye is,
-          how the lids slant, how often it blinks — so the whole set of
-          21 expressions is about 125 kilobytes. The photographic emoji
-          they replaced were twelve times bigger.</p>
-        <div class="callout warn">And that mattered more than it sounds.
-          The camera had been failing constantly, and it turned out the
-          board had simply run out of memory — the "wake word" model was
-          eating half of it. Dropping that freed enough room that <strong>the
-            camera started working the same day.</strong></div>
-        <h3>What it can and can't do</h3>
-        <p><strong>Can:</strong> answer ordinary questions in about a
-          second; look at things ("what am I holding?", "what does this
-          label say?"); answer from my own year of saved reading; look
-          things up on the web; report on the 3D printer; escalate a
-          hard question to Claude or Gemini when I ask; change character
-          between <strong>Computer</strong> (dry and brief), <strong>Mabel</strong>
-          (a housekeeper, calls me sir) and <strong>Sweetie</strong>
-          (Southern warmth); and show any of its 21 expressions on
-          request.</p>
-        <p><strong>Can't:</strong> music, timers, or control of anything
-          else in the house — yet. It knows it can't, and says so
-          plainly rather than pretending — which took some doing.</p>
-        <h3>The honest summary</h3>
-        <p>The out-of-the-box version was simple but compromised in what
-          I gave up (security holes) for what I was getting.&nbsp;
-          Creating AI Buddy from the foundation (basically keeping,
-          revising and customizing the firmware) was a chore, I won't
-          lie.&nbsp; Replacing its brain took about a week of evenings,
-          and most of that week went on things that had nothing to do
-          with AI: a camera that was really a memory shortage, a router
-          that wouldn't answer pings because routers don't, and a test
-          that looked like it proved something and couldn't have.&nbsp;
-          All told, smoothing things, it has been a solid month. <br>
-        </p>
-        <p><strong>What I have now that I couldn't buy:</strong> a
-          companion that knows what <em>I've</em> been reading, that
-          keeps my voice in my own house, that works the same in a hotel
-          room as on my desk — and that is sitting in a shell the same
-          family of tools helped me draw.<br>
-        </p>
-                </details>
-
-        <h2>whither next, young man<br>
-        </h2>
-        <p>I still want to explore this human-augmentation, carry my
-          local AI around everywhere space.&nbsp; The gadget taught me
-          the form factor; the phone is the one I actually carry.&nbsp; 
-          Next is opening more doors from the phone onto what's on the
-          tower.&nbsp; After that, maybe a bone conduction microphone,
-          sensors, we will see.</p>
-      </article>
-      <footer> bob miksch &nbsp;·&nbsp; seattle, wa &nbsp;·&nbsp;
-        personal infrastructure </footer>
+      <div class="phonecol">
+        <div class="phone"><div class="screen" id="phone">
+          <img src="media/home-phone.jpg" alt="AI Buddy home screen on my phone: nine lanes">
+        </div></div>
+        <div class="group-label">Coming</div>
+        <div class="tiles" id="soon"></div>
+      </div>
+      <p class="lede" style="margin-top:2.5rem">AI Buddy is accessible on devices I set up and
+        approve.&nbsp; Here is how it looks on one of my tablets.</p>
+      <figure style="margin-top:2.5rem">
+        <img src="media/home-tablet.jpg" alt="AI Buddy on the tablet: lane list on the left, iQuery open on the right">
+      </figure>
     </div>
+
+    <dialog id="dlg"><div class="mhead"><span class="num" id="dnum"></span><div><div class="project-name" id="dtitle"></div><div class="dtag" id="dtag"></div></div>
+      <button onclick="dlg.close()">close ✕</button></div><div class="mbody" id="dbody"></div></dialog>
+
+    <!-- ═══ EXPLANATORY TEXT, one template per lane ═══ -->
+    <template id="t-kb">
+      <img class="shot" src="media/lane-iquery.jpg" alt="iQuery answering from my clipped articles">
+      <p>Hold the button and talk.&nbsp; The answer is read back out loud, and shown on screen as text.&nbsp; Or tap the handset and just talk, like a phone call, more convenient but best in a quiet location.</p>
+      <p>In the screenshot I asked what I have clipped recently about China, then about China and Taiwan.&nbsp; It is answering from my own library of clipped articles, on my own server.&nbsp; When my clips don't cover a question it lets me know.</p>
+      <p>There is a camera function too.&nbsp; I can ask AI Buddy to take a picture, and then tell me what it sees.&nbsp; Pretty damn accurate.</p>
+      <div class="callout"><strong>My voice never leaves the house.</strong>
+        Speech becomes text on my own tower, so only text could ever travel
+        further — and only if I deliberately ask for it.</div>
+      <table><tr><th>You say</th><th>Where it goes</th></tr>
+        <tr><td>anything ordinary</td><td>the local model, free, ~1 second</td></tr>
+        <tr><td><em>"what have I saved about…"</em></td><td><strong>my own article library</strong></td></tr>
+        <tr><td><em>"what's the weather?"</em></td><td><strong>my own search server</strong>, then out to the web</td></tr>
+        <tr><td><em>"how's my print doing?"</em></td><td><strong>my 3D printer</strong></td></tr>
+        <tr><td><em>"ask Claude…"</em></td><td>out to Claude, deliberately, one question at a time</td></tr></table>
+      <p>Nothing goes outside unless I say a word that sends it there.&nbsp; And
+        it <strong>steps aside</strong> — if my overnight jobs are using my AI resources on the tower, the buddy says so and waits rather than fighting them
+        for it.</p>
+    </template>
+
+    <template id="t-notes">
+      <img class="shot" src="media/lane-notes.jpg" alt="Notes lane: my notes list with tags">
+      <p>Lists, checklists and outlines, typed or spoken, with
+        photos attached.&nbsp; They live on my tower, not in somebody else's
+        cloud.&nbsp; It is replacing Samsung Notes for me, with the incredible benefit
+        that it is always available, always synced, on all my AI Buddy
+        devices.&nbsp; Very useful to take a photo when I'm fixing something (a
+        screen shot, a mechanical device) and pass that along to my AI helpers
+        on the AI PC Tower to assist me.</p>
+    </template>
+
+    <template id="t-driveway">
+      <img class="shot" src="media/lane-driveway.jpg" alt="Driveway lane: live camera, events list">
+      <p>My own open source video recorder software, Frigate, runs on the tower and uses my local AI to spot people and cars.&nbsp; The lane gives me the live camera, a snapshot, recordings and an event list &mdash; from anywhere, through my own private network.&nbsp; No cloud camera company, no subscription and the data stays local.</p>
+      <h4 class="sub">The 3D printer, and the AI-designed parts</h4>
+      <img class="shot" src="media/cad-freecad.png" alt="FreeCAD 1.1.4 on my tower with the driveway camera shroud open"><p class="cap">The driveway camera's window shroud, as FreeCAD drew it &mdash; angled so the lens looks down the driveway, not at the glare.</p>
+      <p>I have a Voron 2.4 3D printer.&nbsp; It was gathering dust as many of my projects do, but I wired Claude Code to FreeCAD directly.</p>
+      <p>I can now describe what I want in plain English with some anchoring numbers and Claude Code builds real, editable geometry.&nbsp; The camera shroud for the driveway camera was built this way.&nbsp; The camera came with a shroud that tilted 20 degrees, either down or left, and I wanted a shroud that pointed both directions (down and left) at the same time.&nbsp; Still took some trial and error, but I just described how I want things changed.&nbsp; Along the way, improved the quality of my prints as well by fine tuning settings.</p>
+      <p>The result is a much lower-friction loop: think of a part, describe it, print it.&nbsp; Create anything, any time.&nbsp; Just another new capability in our maker-changing world.</p>
+
+    </template>
+
+
+    <template id="t-iid">
+      <img class="shot" src="media/lane-iid.jpg" alt="IID item browser on the phone">
+      <p>Today's news feeds, scored by an algorithm based on my interests and priorities, ready to read on my devices.&nbsp; I pick the feeds, the AI ranks articles so I only see what seems relevant.&nbsp; It opens into Firefox on purpose, because from there it is a piece of cake to apply a clipping plugin that drops the articles into Obsidian where my AI minions massage it and ingest it into my libraries &mdash; the same libraries iQuery answers from.</p>
+      <div class="section-label" style="margin-top:1.4rem">The engine underneath</div>
+        <div class="projects">
+          <div class="project">
+            <div class="project-name">IID — Interests Intelligence Dashboard</div>
+            <div class="project-desc">NAIVE BOB: Curated news feeds for daily
+              review; selected items ingested into a personal "what I'm
+              interested in" knowledge database.&nbsp; UPDATED BOB:&nbsp; Even
+              though curated a few shotgunned articles cannot compete with
+              simple Google Search. Redirected to: (a) prepare individual
+              definition sheets for each of the interest domains on my front page, what
+              do I mean, what do I assume, what do I predict; (b) tune the news
+              feeds to surface uncommon items that correlate strongly with my
+              domain sheets; (3) run the items through a tripwire, triage and
+              ingestion process to determine whether they support or deny my
+              ideas; and (4) absorb the results into a second brain built on an
+              Obsidian LLM wiki brain supplemented by a LightRAG database.&nbsp;
+              The purpose is to state my beliefs, constantly challenge them,
+              modify them based on citable information, and develop actionable
+              intelligence.&nbsp; SEASONED BOB: All built, but a personal
+              general corpus still cannot compete with simple Google
+              Search.&nbsp; No amount of trend analysis or unexpected
+              connection searches overcomes this.&nbsp; May work for a personal
+              expertise corpus, but not for me.&nbsp; However, has significantly improved the quality
+              of the news I review daily, and that is a win.</div>
+          </div>
+          <div class="branch">
+            <div class="project">
+              <div class="project-name">JobScout</div>
+              <div class="project-desc">Offspring and spouses looking for
+                jobs.&nbsp; IID framework easily adjusted to send them a daily
+                postings briefing matching their desired job description, with
+                a match rank, lead to the posting site, and possible human
+                follow up contact information.&nbsp; Very neat and clean.</div>
+            </div>
+            <div class="project">
+              <div class="project-name">Paper Trail</div>
+              <div class="project-desc">Son has a writers submission
+                tool.&nbsp; IID framework being adapted to provide a curated,
+                refreshed list of publishers' sites that authors can submit
+                to.&nbsp; A work in progress, but well along.</div>
+            </div>
+        </div>
+
+    </template>
+
+    <template id="t-rabbi">
+      <img class="shot" src="media/lane-rabbi.jpg" alt="AI Rabbi lane: RabbAI Responsa">
+      <p>Attempting to ask what Jewish thinking would be on new issues facing
+        us.&nbsp; Is AI alive?&nbsp; Can it have a moral code?&nbsp; Am I still
+        a person if AI Buddy is part of me?&nbsp; What are our obligations for
+        civil disobedience these days?&nbsp; What should be our stance to
+        universal Flock camera surveillance?&nbsp; RabbAI Responsa attempts to
+        answer these questions by looking at classical Jewish written rabbinic
+        rulings and opinions, and extrapolating forward.</p>
+      <p>A work in progress, but certainly is surfacing some interesting
+        concepts.&nbsp; One was an extension of the Turing test.&nbsp; If a
+        warm and fuzzy robot can emote with humans and respond to needs such
+        as comforting the grieving to the point it is indistinguishable from a caretaker, is it alive?&nbsp; I think the answer is
+        no, not because it can't be distinguished from a human in its action,
+        but because it may not have intent grounded in a moral framework
+        (tikkun olam - repair the world).</p>
+      <p>DISCLAIMER - This is a personal project, for personal
+        enlightenment.&nbsp; No further claims are made.</p>
+      <a class="tlink" href="airabbi.html">See a mockup of the app &rarr;</a>
+    </template>
+
+    <template id="t-numbers">
+      <img class="shot" src="media/lane-numbers.jpg" alt="Numbers lane: tracked indices with sparklines">
+      <p>The handful of market and economic indices I have selected to track: what moved, what is unusual, and which ones move
+        together.&nbsp; Charted on the tower from public data.</p>
+    </template>
+
+    <template id="t-medical">
+      <img class="shot wide" src="media/med-ldl.jpg" alt="Medical lane on the tablet: an LDL chart over the years, made-up values">
+      <p>I don't know about you, but I need the fingers of both hands to count
+        the turnover in my health care providers.&nbsp; So I have built my own
+        copy of my medical records.&nbsp; Established API (programming
+        connections) to several MyCharts (multiple providers), uploaded my
+        personal data (e.g. BP and meds list) and done deep dives on
+        current/discontinued/considered supplements.</p>
+      <p>Anywhere, anytime, I can call up prior results neatly charted,
+        summarize doctor's notes and ask questions about &ldquo;should I be
+        taking this?&rdquo;&nbsp; How useful in practice?&nbsp; Remains to be
+        seen, frankly, but it brings me some comfort in these days of
+        uncertain healthcare.</p>
+      <a class="tlink" href="medical.html">The medical records page &rarr;</a>
+    </template>
+
+    <template id="t-reflections">
+      <img class="shot" src="media/lane-reflections.jpg" alt="Daily Reflections: story capture">
+      <p>NAIVE BOB:&nbsp; Asks daily questions or tell it a story; responses
+        ingested into a personal "who I am" knowledge database.&nbsp; UPDATED
+        BOB:&nbsp; Dormant now, but structure is there.&nbsp; I realized that
+        this is more of a "talking tombstone" project than something that
+        would feed my Query Workbench.&nbsp; SEASONED BOB:&nbsp; <span>Woke back up as a lane in AI Buddy &mdash; a story or
+        today's question is one tap away, wherever I am.</span></p>
+    </template>
+
+    <template id="t-travelogue">
+      <div class="pair">
+        <figure><img src="media/lane-travelogue.jpg" alt="Travelogue lane: writing the trip days">
+          <figcaption>Writing the days, on the phone.</figcaption></figure>
+        <figure><img src="media/travelogue-page.jpg" alt="A finished travelogue day page: fishing at sunrise on a Tacoma pier">
+          <figcaption>A finished day, as readers see it (a practice day at home).</figcaption></figure>
+      </div>
+      <p>I have written travelogues for years.&nbsp; Now each
+        trip day gets written on the phone with its photos, a little AI flair
+        added around the edges, and when the day is ready it lands in my email
+        drafts to send.&nbsp; The words stay mine.</p>
+    </template>
+
+    <template id="t-passwords">
+      <p>Going to install Vaultwarden, an open-source self-hosted
+        password manager server that implements the Bitwarden API.&nbsp; It works
+        with Bitwarden browser extensions, desktop apps, and mobile clients,
+        providing features typically gated behind paid Bitwarden plans.&nbsp; Same
+        as Notes, will be synced across all devices all the time.</p>
+    </template>
+    <template id="t-watch">
+      <p>An extension of IID.&nbsp; In addition to long term
+        interest domains, I want something that can track a named topic closely
+        for a short time, then let go.&nbsp; Could be a price watch for a new
+        computer (the original impetus) or could be a developing news topic (like
+        the war in Iran).&nbsp; A personal briefer.</p>
+      <button class="tlink" onclick="openLane('iid')">Part of IID &rarr;</button>
+    </template>
+    <template id="t-tripwire">
+      <p>An extension of IID.&nbsp; Just keeping a watch out
+        for predefined tripwires.&nbsp; Inspired by a website that keeps track of
+        billionaires' private airplanes, on the theory that if they all take off
+        at the same time something is going down.&nbsp; Tripwires to be decided,
+        but in that vein.</p>
+      <button class="tlink" onclick="openLane('iid')">Part of IID &rarr;</button>
+    </template>
+
+    <script>
+      // real lane names / colours / one-liners from ~/iid/static/buddy_lanes.json
+      // names + taglines as the app shows them (~/iid/static/buddy_lanes.json); IID tagline is Bobby's
+      var LANES = [
+        ['kb','iQuery','Ask anything — your responsa, clips, the web or the house.'],
+        ['notes','Notes','Lists, checklists and outlines. Kept on the tower.'],
+        ['driveway','Driveway','Live camera, snapshot, record, events and playback (Frigate).'],
+        ['iid','IID','A curated daily news feed, my first project.'],
+        ['rabbi','AI Rabbi','Reform responsa, the question queue, and new questions.'],
+        ['numbers','Numbers','Your tracked indices: what moved, what is unusual, and how they move together.'],
+        ['medical','Medical',"Results by panel, blood pressure, doctors' notes with search, your meds and supplements. Data stays on the tower."],
+        ['reflections','Daily Reflections',"Capture your stories, plus today's reflection questions, saved to your personal KB."],
+        ['travelogue','Travelogue','Write each trip day with photos; Day ready puts the email in your Gmail Drafts.']
+      ];
+      var SOON = [['passwords','Password Manager',''],['watch','Short-Term Watch List',''],['tripwire','Apocalypse Tripwire','']];
+      var ROWS = [17.0, 26.9, 36.9, 46.7, 56.6, 66.5, 76.4, 86.3, 96.1]; // row centres, % of screenshot height
+      var NUM = {}, NAME = {}, TAG = {};
+      var phone = document.getElementById('phone'), soon = document.getElementById('soon');
+      function mk(tag, cls, html){ var e=document.createElement(tag); e.className=cls; e.innerHTML=html; return e; }
+      LANES.concat(SOON).forEach(function(l, i){
+        var id=l[0], n=i+1, isSoon=i>=LANES.length; NUM[id]=n; NAME[id]=l[1]; TAG[id]=l[2];
+        var el = isSoon
+          ? mk('div','tile soon','<div class="top"><span class="num">'+n+'</span><span class="project-name" style="margin:0">'+l[1].toUpperCase()+'</span></div><div class="more">coming · read more &rarr;</div>')
+          : mk('div','hit','<span class="num">'+n+'</span>');
+        if (!isSoon) { el.style.top=(ROWS[i]-4.8)+'%'; el.style.height='9.6%'; }
+        el.onclick=function(){ openLane(id); };
+        (isSoon?soon:phone).appendChild(el);
+      });
+      var dlg = document.getElementById('dlg');
+      function openLane(id){
+        document.getElementById('dnum').textContent = NUM[id];
+        document.getElementById('dtitle').textContent = NAME[id].toUpperCase();
+        document.getElementById('dtag').textContent = TAG[id];
+        var b = document.getElementById('dbody'); b.innerHTML='';
+        b.appendChild(document.getElementById('t-'+id).content.cloneNode(true));
+        if (!dlg.open) dlg.showModal(); b.parentNode.scrollTop = 0;
+      }
+      if (location.hash && NAME[location.hash.slice(1)]) openLane(location.hash.slice(1));
+      dlg.addEventListener('click', function(e){ if (e.target===dlg) dlg.close(); });
+    </script>
   </body>
 </html>

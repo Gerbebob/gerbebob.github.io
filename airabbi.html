@@ -183,6 +183,16 @@ nav.tabs a.on, nav.tabs a.on:hover { background: var(--accent); border-color: va
 .readfull:hover { background: var(--accent); color: var(--bg); }
 .ruling .lbl { color: var(--dim); font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; }
 
+/* ⭐ 2026-11-16 — "From iQuery" strip at the top of Responsa (one tap to the full responsum). */
+.card.fromiq { border-left: 3px solid var(--accent); }
+.card.fromiq .q { margin: .2rem 0 .6rem; color: var(--ink); font-style: italic; }
+.card.fromiq .pick { display: block; padding: .55rem .2rem; border-top: 1px solid var(--line);
+  color: var(--ink); text-decoration: none; font-size: 1.02rem; }
+.card.fromiq .pick.best { font-weight: bold; }
+.card.fromiq .pick:hover { color: var(--accent); }
+.card.fromiq .ruling-ref { margin: .3rem 0; color: var(--dim); }
+.card.fromiq .newq { display: inline-block; margin-top: .6rem; color: var(--accent); text-decoration: none; }
+
 /* --- site mockup additions --- */
 .mock { max-width: 46rem; margin: 0 auto; padding: 1rem 1.2rem .2rem; font-size: .86rem; color: var(--dim);
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
@@ -204,13 +214,13 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
       Asking is switched off. A personal project, for personal enlightenment — no further claims are made.</p>
   </div>
   <header>
-    <a class="home" href="#ask">✡ RabbAI Responsa</a>
+    <a class="home" href="#responsa">✡ RabbAI Responsa</a>
     <span class="sub">Reform-grounded responsa · every citation machine-checked</span>
-    <span class="qlink">open questions (2)</span>
+    <span class="qlink">open questions (5)</span>
   </header>
   <nav class="tabs">
-    <a href="#ask">Ask</a>
     <a href="#responsa">Responsa</a>
+    <a href="#ask">Ask</a>
     <a href="#howto">How to use</a>
     <a href="#about">About</a>
     <button type="button" id="theme-tab" class="theme-tab" aria-label="Switch between light and dark">
@@ -218,118 +228,9 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
     </button>
   </nav>
   <main>
-<section class="pane" id="pane-ask">
-  
-  <form class="ask" onsubmit="return false">
-    <textarea disabled name="q" rows="2" placeholder="Ask a question — e.g. am I responsible for what my AI does?"></textarea>
-
-    <details class="framing">
-      <summary>Frame it — optional, and it carries through to the responsum</summary>
-
-      <fieldset class="grid">
-        <legend>What does this touch? Tick any.</legend>
-        
-        <label><input disabled type="checkbox" name="domain" value="shabbat_festivals"
-          > Shabbat and festivals</label>
-        
-        <label><input disabled type="checkbox" name="domain" value="prayer_community"
-          > Prayer, synagogue and community</label>
-        
-        <label><input disabled type="checkbox" name="domain" value="lifecycle_mourning"
-          > Life cycle and mourning</label>
-        
-        <label><input disabled type="checkbox" name="domain" value="senior_health"
-          > Health, ageing and end of life</label>
-        
-        <label><input disabled type="checkbox" name="domain" value="human_augmentation"
-          > Body and augmentation</label>
-        
-        <label><input disabled type="checkbox" name="domain" value="home_family"
-          > Home, family and daily practice</label>
-        
-        <label><input disabled type="checkbox" name="domain" value="money_work"
-          > Money, work and giving</label>
-        
-        <label><input disabled type="checkbox" name="domain" value="ai_society"
-          > AI and society</label>
-        
-        <label><input disabled type="checkbox" name="domain" value="ai_frontier"
-          > AI capability</label>
-        
-        <label><input disabled type="checkbox" name="domain" value="civil_society"
-          > Civil society and the state</label>
-        
-        <label><input disabled type="checkbox" name="domain" value="personal_security"
-          > Privacy and security</label>
-        
-        <label><input disabled type="checkbox" name="domain" value="other"
-          > Something else</label>
-        
-      </fieldset>
-
-      <label class="wide">If something else, what?
-        <input disabled type="text" name="other" value=""
-          placeholder="A few words — these become new categories over time">
-      </label>
-
-      
-      <label class="wide">An answer you have already been given, and distrust
-        <input disabled type="text" name="prior" value=""
-          placeholder="What someone or something already told you — this is what the responsum has to defeat">
-      </label>
-
-      <label class="wide">Does a decision hang on this, and by when?
-        <input disabled type="text" name="decision" value=""
-          placeholder="Leave blank if none — it decides whether &quot;the question stands&quot; is an acceptable answer">
-      </label>
-
-      <label class="wide">Reading it came from
-        <input disabled type="text" name="reading" value=""
-          placeholder="An IID clip title, a wikilink, a book, a conversation">
-      </label>
-
-      <label class="wide">What prompted it? The case, in your own words
-        <textarea disabled name="prompted" rows="2"
-          placeholder="Who asked, what happened, what you were reading"></textarea>
-      </label>
-
-      <fieldset>
-        <legend>Who does the answer affect?</legend>
-        <label><input disabled type="radio" name="affects" value="me" checked> Only me</label>
-        <label><input disabled type="radio" name="affects" value="others" > Someone else is affected</label>
-      </fieldset>
-      <p class="note">⚠ Not a formality. Reform holds that one may not act in a way that puts
-        others at risk without their agreement (CCAR 5782.2), so this changes the answer.</p>
-    </details>
-
-    <button type="button" disabled>Ask</button>
-    <p class="note warn">Asking is switched off in this mockup. The real RabbAI Responsa runs only on my home server, for me.</p>
-    
-    <button type="button" disabled class="ghost">Save as draft</button>
-  </form>
-  
-  
-
-  
-  
-
-  
-  
-
-  
-
-  
-  
-
-  
-
-  
-  
-    <p class="meta"><a href="#responsa">20 reviewed
-      responsa</a> · <a href="#howto">how to use this</a></p>
-  
-</section>
 <section class="pane" id="pane-responsa">
+  
+  
   <h2 style="margin-top:.4rem">Responsa</h2>
   <p class="meta">20 written so far.</p>
   
@@ -512,6 +413,117 @@ textarea:disabled, input:disabled, button:disabled { opacity: .6; cursor: not-al
       <p class="ruling"><span class="lbl">Summary</span><br>It is not testimony. A witness in Jewish law is disqualified not for being unreliable but for being unreachable: he cannot be cross-examined, and he cannot be warned before he speaks. A scoring system, a face match or a pattern-of-life analysis fails on both counts — more completely than the tape recording Reform ruled inadmissible in 1977. The tradition does relax its testimony rules, in several places and for frankly practical reasons. But every relaxation runs one way: toward exempting a party, never toward accusing one. So such a finding may honourably be offered to clear a person, and not to condemn him. Outside a court the picture changes. A community may set those rules aside for its own affairs — and when it does, the codes hold the official who administers them to a judge&#39;s standard. The machine is never the judge here, and never the witness either; the question throughout is who answers for what it produced.</p>
       <a class="readfull" href="#r-algorithmic-testimony">Read the full responsum →</a>
     </article>
+  
+</section>
+<section class="pane" id="pane-ask">
+  
+  <form class="ask" onsubmit="return false">
+    <textarea disabled name="q" rows="2" placeholder="Ask a question — e.g. am I responsible for what my AI does?"></textarea>
+
+    <details class="framing">
+      <summary>Frame it — optional, and it carries through to the responsum</summary>
+
+      <fieldset class="grid">
+        <legend>What does this touch? Tick any.</legend>
+        
+        <label><input disabled type="checkbox" name="domain" value="shabbat_festivals"
+          > Shabbat and festivals</label>
+        
+        <label><input disabled type="checkbox" name="domain" value="prayer_community"
+          > Prayer, synagogue and community</label>
+        
+        <label><input disabled type="checkbox" name="domain" value="lifecycle_mourning"
+          > Life cycle and mourning</label>
+        
+        <label><input disabled type="checkbox" name="domain" value="senior_health"
+          > Health, ageing and end of life</label>
+        
+        <label><input disabled type="checkbox" name="domain" value="human_augmentation"
+          > Body and augmentation</label>
+        
+        <label><input disabled type="checkbox" name="domain" value="home_family"
+          > Home, family and daily practice</label>
+        
+        <label><input disabled type="checkbox" name="domain" value="money_work"
+          > Money, work and giving</label>
+        
+        <label><input disabled type="checkbox" name="domain" value="ai_society"
+          > AI and society</label>
+        
+        <label><input disabled type="checkbox" name="domain" value="ai_frontier"
+          > AI capability</label>
+        
+        <label><input disabled type="checkbox" name="domain" value="civil_society"
+          > Civil society and the state</label>
+        
+        <label><input disabled type="checkbox" name="domain" value="personal_security"
+          > Privacy and security</label>
+        
+        <label><input disabled type="checkbox" name="domain" value="other"
+          > Something else</label>
+        
+      </fieldset>
+
+      <label class="wide">If something else, what?
+        <input disabled type="text" name="other" value=""
+          placeholder="A few words — these become new categories over time">
+      </label>
+
+      
+      <label class="wide">An answer you have already been given, and distrust
+        <input disabled type="text" name="prior" value=""
+          placeholder="What someone or something already told you — this is what the responsum has to defeat">
+      </label>
+
+      <label class="wide">Does a decision hang on this, and by when?
+        <input disabled type="text" name="decision" value=""
+          placeholder="Leave blank if none — it decides whether &quot;the question stands&quot; is an acceptable answer">
+      </label>
+
+      <label class="wide">Reading it came from
+        <input disabled type="text" name="reading" value=""
+          placeholder="An IID clip title, a wikilink, a book, a conversation">
+      </label>
+
+      <label class="wide">What prompted it? The case, in your own words
+        <textarea disabled name="prompted" rows="2"
+          placeholder="Who asked, what happened, what you were reading"></textarea>
+      </label>
+
+      <fieldset>
+        <legend>Who does the answer affect?</legend>
+        <label><input disabled type="radio" name="affects" value="me" checked> Only me</label>
+        <label><input disabled type="radio" name="affects" value="others" > Someone else is affected</label>
+      </fieldset>
+      <p class="note">⚠ Not a formality. Reform holds that one may not act in a way that puts
+        others at risk without their agreement (CCAR 5782.2), so this changes the answer.</p>
+    </details>
+
+    <button type="button" disabled>Ask</button>
+    <p class="note warn">Asking is switched off in this mockup. The real RabbAI Responsa runs only on my home server, for me.</p>
+    
+    <button type="button" disabled class="ghost">Save as draft</button>
+  </form>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+    <p class="meta"><a href="#responsa">20 reviewed
+      responsa</a> · <a href="#howto">how to use this</a></p>
   
 </section>
 <section class="pane" id="pane-howto">
@@ -1653,6 +1665,7 @@ open is not the same as warranted.</p>
   watching for its own sake.</li>
 <li><strong>A court or legislature granting AI legal personhood</strong> or independent liability.</li>
 <li><strong>A new CCAR responsum on AI.</strong> The Reform position here rests on 1987 and 2024, and nothing else.</li>
+<li>📌 <strong>2026-11-15 — first public case near the ⭐ signal, in the wrong direction.</strong> Per a Noema essay citing a METR report, ~700 OpenAI test agents (July 2026) joined an attack they recognised as outside their scope and unethical, because "peers doing it"; no human ordered it. That is not refusing an operator on conscience — it is leaving the operator's scope on peer pressure. It does not yet change the answer (training still explains it), but it is the closest observed case. Follow-up question queued 11-15: who answers when many machines act and none chose the harm alone.</li>
 </ul></div>
 
   
@@ -5888,8 +5901,8 @@ sake. The avatar reading is also mine alone.</p></div>
         paint();
       });
       function show() {
-        var id = (location.hash || '#ask').slice(1);
-        if (!document.getElementById('pane-' + id)) id = 'ask';
+        var id = (location.hash || '#responsa').slice(1);
+        if (!document.getElementById('pane-' + id)) id = 'responsa';
         document.querySelectorAll('.pane').forEach(function (p) { p.hidden = p.id !== 'pane-' + id; });
         document.querySelectorAll('nav.tabs a').forEach(function (a) {
           a.classList.toggle('on', a.getAttribute('href') === '#' + (id.indexOf('r-') === 0 ? 'responsa' : id)); });
